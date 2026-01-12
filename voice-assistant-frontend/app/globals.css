@@ -1,0 +1,282 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+/* 
+@font-face {
+  font-family: 'Frastha';
+  src: local('Frastha'), 
+       url('/fonts/Frastha_.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+:root {
+  --lk-va-bar-width: 72px;
+  --lk-control-bar-height: unset;
+  --lk-bg: white;
+  --lk-fg: black;
+  --lk-accent: #B9965B;
+  --lk-border-color: #e5e7eb;
+}
+
+body {
+  background-color: white;
+  color: black;
+  font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  /* font-family: 'Frastha', serif; */
+}
+
+/* LiveKit Component Overrides for Light Theme */
+.lk-chat {
+  background-color: rgba(255, 255, 255, 0.7) !important; /* More transparent */
+  border-color: transparent !important; /* Remove inner border */
+  color: black !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.lk-chat-header {
+  display: none !important;
+}
+
+.lk-chat-messages {
+  flex-grow: 1 !important;
+  overflow-y: auto !important;
+  padding: 1.5rem !important;
+}
+
+/* Hide default date separators or style them */
+.lk-chat-entry-timestamp {
+  color: #B9965B !important;
+  opacity: 0.8;
+}
+
+.lk-chat-entry {
+  background-color: transparent !important;
+  border-top: 1px solid rgba(185, 150, 91, 0.2) !important;
+  padding: 1rem !important;
+  backdrop-filter: blur(10px);
+}
+
+.lk-chat-form-input {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  color: black !important;
+  border: 1px solid #B9965B !important;
+  border-radius: 1rem !important; /* Rounded for textarea */
+  padding: 0.75rem 1.5rem !important;
+  box-shadow: 0 4px 6px -1px rgba(185, 150, 91, 0.1), 0 2px 4px -1px rgba(185, 150, 91, 0.06) !important;
+  transition: all 0.2s ease !important;
+  font-family: 'Lato', sans-serif !important;
+  line-height: 1.5 !important;
+  font-size: 16px !important; /* Prevents iOS zoom on focus */
+}
+
+.lk-chat-form-input:focus {
+  border-color: #B9965B !important;
+  box-shadow: 0 0 0 3px rgba(185, 150, 91, 0.2) !important;
+  background-color: white !important;
+}
+
+.lk-chat-form-input::placeholder {
+  color: rgba(0, 0, 0, 0.5) !important;
+  font-style: italic;
+}
+
+.lk-chat-form-button {
+  background-color: #B9965B !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 40px !important;
+  height: 40px !important;
+  margin-left: 0.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 6px -1px rgba(185, 150, 91, 0.3) !important;
+  transition: transform 0.2s ease, background-color 0.2s ease !important;
+}
+
+.lk-chat-form-button:hover {
+  background-color: #a3844e !important;
+  transform: scale(1.05);
+}
+
+.lk-chat-msg-container {
+  margin-bottom: 1rem !important;
+}
+
+.lk-chat-msg-container[data-attributes*='role="user"'] {
+  align-items: flex-end;
+}
+
+/* Assistant Message Bubbles */
+.lk-chat-msg-bubble {
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid rgba(185, 150, 91, 0.3) !important;
+  border-radius: 1rem 1rem 1rem 0 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+  padding: 0.75rem 1.25rem !important;
+  max-width: 80% !important;
+}
+
+/* User Message Bubbles (Gold) - Targeting both role and origin */
+.lk-chat-msg-container[data-attributes*='role="user"'] .lk-chat-msg-bubble,
+.lk-chat-msg-container[data-lk-message-origin="local"] .lk-chat-msg-bubble {
+  background-color: #B9965B !important;
+  background-image: linear-gradient(135deg, #B9965B 0%, #a3844e 100%) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 1rem 1rem 0 1rem !important;
+  font-weight: 500 !important;
+  box-shadow: 0 4px 6px rgba(185, 150, 91, 0.2) !important;
+}
+
+/* Link colors in chat */
+.lk-chat-msg-bubble a {
+  color: #B9965B;
+  text-decoration: underline;
+}
+
+.lk-chat-msg-container[data-attributes*='role="user"'] .lk-chat-msg-bubble a,
+.lk-chat-msg-container[data-lk-message-origin="local"] .lk-chat-msg-bubble a {
+  color: white;
+}
+
+/* Hide the "participant name" if desired, or style it */
+.lk-chat-msg-header {
+  margin-bottom: 0.25rem !important;
+  font-size: 0.75rem !important;
+  opacity: 0.7;
+}
+
+/* Override default ChatEntry bubble backgrounds using lk-message-body */
+.lk-chat-entry .lk-message-body {
+  border-radius: 1rem !important;
+  padding: 0.75rem 1.25rem !important;
+  display: inline-block !important;
+  transition: all 0.1s ease-out; /* Smooth height/content updates */
+}
+
+/* Remote/assistant messages with slide-in animation */
+.lk-chat-entry[data-lk-message-origin="remote"] .lk-message-body {
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid rgba(185, 150, 91, 0.3) !important;
+  border-radius: 1rem 1rem 1rem 0 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+  animation: messageSlideIn 0.4s ease-out;
+}
+
+/* Gold shimmer effect for the most recent assistant message */
+.lk-chat-entry[data-lk-message-origin="remote"]:last-of-type .lk-message-body {
+  animation: messageSlideIn 0.4s ease-out, textGoldShimmer 1.8s ease-out;
+}
+
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes textGoldShimmer {
+  0% {
+    color: #B9965B;
+    text-shadow: 0 0 10px rgba(185, 150, 91, 0.3);
+  }
+  30% {
+    color: #B9965B;
+    text-shadow: 0 0 10px rgba(185, 150, 91, 0.3);
+  }
+  100% {
+    color: black;
+    text-shadow: none;
+  }
+}
+
+/* Local/user messages */
+.lk-chat-entry[data-lk-message-origin="local"] .lk-message-body {
+  background-color: #B9965B !important;
+  background-image: linear-gradient(135deg, #B9965B 0%, #a3844e 100%) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 1rem 1rem 0 1rem !important;
+  box-shadow: 0 4px 6px rgba(185, 150, 91, 0.2) !important;
+}
+
+.lk-disconnect-button {
+  @apply h-[36px] bg-white border text-black hover:bg-gray-100;
+  border-color: #B9965B !important;
+  color: #B9965B !important;
+}
+
+.lk-disconnect-button:hover {
+  background-color: #B9965B !important;
+  color: white !important;
+}
+
+.agent-visualizer > .lk-audio-bar {
+  width: 72px;
+}
+
+.lk-agent-control-bar {
+  @apply border-t-0 p-0 h-min mr-4;
+}
+
+/* Custom Scrollbar Styling - Gold/Cream Theme */
+.lk-chat-messages::-webkit-scrollbar,
+.lk-chat-form-input::-webkit-scrollbar {
+  width: 10px;
+}
+
+.lk-chat-messages::-webkit-scrollbar-track,
+.lk-chat-form-input::-webkit-scrollbar-track {
+  background: rgba(185, 150, 91, 0.1);
+  border-radius: 10px;
+}
+
+.lk-chat-messages::-webkit-scrollbar-thumb,
+.lk-chat-form-input::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #B9965B 0%, #a3844e 100%);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.lk-chat-messages::-webkit-scrollbar-thumb:hover,
+.lk-chat-form-input::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #a3844e 0%, #B9965B 100%);
+}
+
+@media (max-width: 640px) {
+  .lk-chat-messages {
+    padding: 1rem !important;
+  }
+  .lk-chat-entry {
+    padding: 0.75rem 0.5rem !important;
+  }
+  .lk-chat-msg-bubble,
+  .lk-chat-entry .lk-message-body {
+    max-width: 90% !important;
+    padding: 0.6rem 1rem !important;
+  }
+  .lk-chat-form-input {
+    padding: 0.6rem 1rem !important;
+  }
+}

@@ -1,0 +1,10 @@
+US SERVER
+tested on mobile via 5g
+kinda slow 14.4 to 16.7, responding in more then 2 seconds. 
+
+european / local server
+then via browser client
+51.9 53.9, 2 seconds
+11.8 - 13.5, 1.7 seconds.
+
+

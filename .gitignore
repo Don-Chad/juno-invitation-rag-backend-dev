@@ -1,0 +1,158 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment variables
+.env
+.env.local
+
+# Vector databases and caches
+local_vector_db/
+local_vector_db_enhanced/
+local_vector_db_enhanced_backup*/
+qa_vector_db/
+*.pkl
+*.npy
+*.map
+vdb_data*
+
+# Documents (too large for git)
+docs/
+docs/*.pdf
+docs/*.docx
+docs/*.xlsx
+docs/websites/
+
+# Logs
+*.log
+*.log.*
+rag_query_log*.txt
+chat/transcriptions.log*
+
+# Audio/Video
+*.wav
+*.mp3
+*.mp4
+*.avi
+
+# Models
+*.onnx
+*.gguf
+*.bin
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.backup
+*.old
+*.zip
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Old/backup directories
+agents_old*/
+*_old/
+*_backup/
+old/
+research/
+code_inspiration/
+changelogs/
+
+# Service files (system specific)
+*.service
+
+# Benchmarks results
+benchmarks/
+
+# LFS files
+*.onnx
+*.wav
+*.mp3
+
+# Specific large files
+bzsnapshot*.zip
+nginx_deployment/
+nginx_deployment.zip
+
+# Development documents
+documents_development/
+
+
+
+# Data directories
+data/
+
+
+
+# GitHub submodules
+github/
+
+# Node.js dependencies and build artifacts
+node_modules/
+.next/
+.npm/
+.pnpm-store/
+*.node
+
+# Frontend build artifacts and dependencies (within frontend directories)
+**/node_modules/
+**/.next/
+**/.npm/
+**/.pnpm-store/
+**/*.node
+
+# Frontend backup directories
+voice-assistant-frontend copy/
+*_backup/
+*_copy/
+**/*_backup/
+**/*_copy/
+
+# Specific frontend exclusions
+voice-assistant-frontend/voice-assistant-frontend_backup copy/
+agent-starter-embed/*_backup/
+agent-starter-embed/*_copy/
+
+# Llama server (compiled binaries and archives)
+llama-server/llama.cpp/
+llama-server/*.tar.gz
+llama-server/*.zip
+
+# Large archives
+*.tar.gz
+*.tar.bz2
+*.tar.xz

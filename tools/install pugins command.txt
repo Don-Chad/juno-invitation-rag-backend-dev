@@ -1,0 +1,34 @@
+uv pip install /root/workerv4/agents && uv pip install -e ./livekit-plugins-azure --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-cartesia --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-deepgram --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-elevenlabs --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-google --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-openai --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-rag --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-llama-index --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-turn-detector --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-silero --config-settings editable_mode=strict && uv pip install python-dotenv==1.0.1 firebase_admin groq aiofile tiktoken scipy pveagle pyaudio
+uv pip install -e ./livekit-plugins-assemblyai --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-azure --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-cartesia --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-deepgram --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-elevenlabs --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-google --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-openai --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-rag --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-llama-index --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-turn-detector --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-silero --config-settings editable_mode=strict && uv pip install python-dotenv==1.0.1 firebase_admin groq aiofile tiktoken scipy pveagle pyaudio
+
+
+
+for the temp_ssh_worker_server_agent
+
+uv pip install /root/workerv4/agents && uv pip install python-dotenv==1.0.1 firebase_admin groq aiofile tiktoken scipy pveagle pyaudio
+cd /root/workerv4/agents/livekit-plugins/
+uv pip install -e ./livekit-plugins-assemblyai --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-azure --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-cartesia --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-deepgram --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-elevenlabs --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-google --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-minimal --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-nltk --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-openai --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-rag --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-llama-index --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-turn-detector --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-silero --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-playht
+
+python "00--multi_agent_mixed with_play.py" dev
+
+new server
+
+
+
+
+
+apt update
+sudo apt install portaudio19-dev
+pip install uv --break-system-packages
+uv venv workerv4
+source workerv4/bin/activate
+uv pip install ./agents/livekit-agents && uv pip install python-dotenv==1.0.1 firebase_admin groq aiofile tiktoken scipy pveagle pyaudio
+cd agents/livekit-plugins/
+uv pip install -e ./livekit-plugins-assemblyai --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-azure --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-cartesia --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-deepgram --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-elevenlabs --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-google --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-minimal --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-nltk --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-openai --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-rag --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-llama-index --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-turn-detector --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-silero --config-settings editable_mode=strict && uv pip install -e ./livekit-plugins-playai
+
+working
+uv pip install ./agents/livekit-agents && uv pip install python-dotenv==1.0.1 firebase_admin groq aiofile tiktoken scipy pveagle pyaudio
+cd..
+cd ..
+python 00--multi_agent.py dev
+

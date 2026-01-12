@@ -1,0 +1,70 @@
+LIVEKIT TURN DETECTOR - QUICK MODE ONLY
+========================================
+
+Version: 0.5.0+quickmode
+Location: /root/workerv14_grace_rag/custom_packages/livekit-plugins-turn-detector-quickmode
+
+WHAT THIS IS:
+-------------
+A lightweight, drop-in replacement for livekit-plugins-turn-detector that uses
+ONLY punctuation-based detection. NO ML models are loaded at startup.
+
+KEY DIFFERENCES FROM ORIGINAL:
+-------------------------------
+✓ NO model loading - instant startup
+✓ NO onnxruntime dependency
+✓ NO transformers dependency  
+✓ NO huggingface-hub dependency
+✓ Only requires: livekit-agents
+
+HOW IT WORKS:
+-------------
+Detects end of turn by checking if text ends with: . ! ?
+- Returns probability 1.0 if punctuation found
+- Returns probability 0.0 if no punctuation
+- Supports ALL languages (not just English)
+- Zero latency detection
+
+INSTALLATION:
+-------------
+cd /root/workerv14_grace_rag/custom_packages/livekit-plugins-turn-detector-quickmode
+./install.sh
+
+This will:
+1. Uninstall the original livekit-plugins-turn-detector
+2. Install this quick mode version in its place
+
+UNINSTALL:
+----------
+./uninstall.sh
+
+Then reinstall original if needed:
+pip install livekit-plugins-turn-detector
+
+USAGE:
+------
+Same as original - it's a drop-in replacement:
+
+from livekit.plugins import turn_detector
+model = turn_detector.EOUModel()
+
+FILES:
+------
+livekit/plugins/turn_detector/
+├── __init__.py     - Plugin registration
+├── eou.py         - Quick mode detection logic (NO model loading)
+├── log.py         - Logger
+└── version.py     - Version info
+
+WHAT WAS REMOVED:
+-----------------
+❌ All ML model loading code
+❌ ONNX inference code
+❌ Transformers tokenizer code
+❌ Model download functionality
+❌ Config file (not needed - only quick mode)
+❌ All heavy dependencies
+
+This is a production-ready, simplified version for users who want fast
+startup and don't need ML-based turn detection.
+

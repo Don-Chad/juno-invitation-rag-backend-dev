@@ -1,0 +1,42 @@
+
+livekit-agents==1.3.10
+
+livekit-plugins-turn-detector
+groq
+livekit-plugins-openai
+livekit-plugins-elevenlabs
+livekit-plugins-deepgram
+livekit-plugins-silero
+livekit-plugins-noise-cancellation
+transformers
+livekit-plugins-google
+livekit-plugins-inworld
+
+# --- Core dependencies ---
+aiohttp
+websockets
+pydantic
+tenacity
+
+# --- Audio / video ---
+sounddevice
+numpy
+av
+pyaudio
+ffmpeg-python
+
+# --- Misc ---
+python-dotenv
+loguru
+aiofile
+tiktoken
+python-dotenv==1.0.1
+firebase_admin
+groq
+scipy
+pveagle
+pyaudio
+PyPDF2
+spacy
+python-docx
+annoy
