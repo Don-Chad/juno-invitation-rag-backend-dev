@@ -72,19 +72,63 @@ function StreamingText({ text, isLocal }: { text: string; isLocal: boolean }) {
   );
 }
 
+// Typing indicator component
+function TypingIndicator() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -10 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -10 }}
+      className="flex flex-col items-start lk-chat-entry"
+    >
+      <span className="text-[10px] text-[#B9965B] opacity-70 mb-1 ml-2 font-heading uppercase tracking-widest">
+        AVA
+      </span>
+      <div className="lk-message-body max-w-[85%] sm:max-w-[75%] bg-[#B9965B]/5 rounded-2xl px-4 py-2 flex gap-1.5 items-center min-h-[40px]">
+        <motion.span
+          animate={{ opacity: [0.3, 1, 0.3] }}
+          transition={{ repeat: Infinity, duration: 1.4, times: [0, 0.5, 1], ease: "easeInOut" }}
+          className="w-1.5 h-1.5 bg-[#B9965B] rounded-full shadow-[0_0_4px_rgba(185,150,91,0.3)]"
+        />
+        <motion.span
+          animate={{ opacity: [0.3, 1, 0.3] }}
+          transition={{ repeat: Infinity, duration: 1.4, times: [0, 0.5, 1], delay: 0.2, ease: "easeInOut" }}
+          className="w-1.5 h-1.5 bg-[#B9965B] rounded-full shadow-[0_0_4px_rgba(185,150,91,0.3)]"
+        />
+        <motion.span
+          animate={{ opacity: [0.3, 1, 0.3] }}
+          transition={{ repeat: Infinity, duration: 1.4, times: [0, 0.5, 1], delay: 0.4, ease: "easeInOut" }}
+          className="w-1.5 h-1.5 bg-[#B9965B] rounded-full shadow-[0_0_4px_rgba(185,150,91,0.3)]"
+        />
+      </div>
+    </motion.div>
+  );
+}
+
 export function CustomChat() {
   const { send, chatMessages } = useChat();
   const [message, setMessage] = useState("");
+  const [isWaiting, setIsWaiting] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll to bottom when messages update
+  // Auto-scroll to bottom when messages update or waiting state changes
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTo({
         top: scrollRef.current.scrollHeight,
         behavior: "smooth",
       });
+    }
+  }, [chatMessages, isWaiting]);
+
+  // Handle waiting state: set to false when a new remote message arrives
+  useEffect(() => {
+    if (chatMessages.length > 0) {
+      const lastMessage = chatMessages[chatMessages.length - 1];
+      if (!lastMessage.from?.isLocal) {
+        setIsWaiting(false);
+      }
     }
   }, [chatMessages]);
 
@@ -93,6 +137,7 @@ export function CustomChat() {
     if (message.trim()) {
       send(message);
       setMessage("");
+      setIsWaiting(true); // Start waiting after sending a message
       if (textareaRef.current) {
         textareaRef.current.style.height = "auto";
       }
@@ -143,6 +188,7 @@ export function CustomChat() {
               </motion.div>
             );
           })}
+          {isWaiting && <TypingIndicator />}
         </AnimatePresence>
       </div>
 

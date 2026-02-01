@@ -1,11 +1,11 @@
 "use client";
 
-import { CloseIcon } from "@/components/CloseIcon";
 import { NoAgentNotification } from "@/components/NoAgentNotification";
-import PasswordAuth from "@/components/PasswordAuth";
+import FirebaseAuth from "@/components/FirebaseAuth";
+import { auth } from "@/lib/firebase";
+import { User, signOut } from "firebase/auth";
 import { CustomChat } from "@/components/CustomChat";
 import {
-  DisconnectButton,
   RoomContext,
   useVoiceAssistant,
   useRoomContext,
@@ -48,68 +48,104 @@ function ConnectionIndicator() {
 }
 
 export default function Page() {
-  const [room] = useState(new Room());
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // Use state with a key to force re-creation of Room when needed
+  const [roomKey, setRoomKey] = useState(0);
+  const [room, setRoom] = useState<Room | null>(null);
+  const [firebaseUser, setFirebaseUser] = useState<User | null>(null);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
-  const [userName, setUserName] = useState("");
-  const [hasEnteredName, setHasEnteredName] = useState(false);
+  const [isConnecting, setIsConnecting] = useState(false);
+
+  // Create a fresh Room instance when roomKey changes
+  useEffect(() => {
+    const newRoom = new Room();
+    setRoom(newRoom);
+    
+    // Cleanup: disconnect and dispose when creating new room or unmounting
+    return () => {
+      if (newRoom.state !== ConnectionState.Disconnected) {
+        newRoom.disconnect().catch(console.error);
+      }
+    };
+  }, [roomKey]);
 
   // Check for existing session on mount
   useEffect(() => {
-    const checkSession = async () => {
-      const token = localStorage.getItem('grace_session_token');
-      const expiresAt = localStorage.getItem('grace_session_expires');
-      
-      if (token && expiresAt) {
-        // Check if token is still valid
-        const expiryDate = new Date(expiresAt);
-        if (expiryDate > new Date()) {
-          try {
-            const response = await fetch('/api/auth', {
-              method: 'GET',
-              headers: {
-                'Authorization': `Bearer ${token}`
-              }
-            });
-            
-            if (response.ok) {
-              setIsAuthenticated(true);
-            } else {
-              // Session invalid, clear storage
-              localStorage.removeItem('grace_session_token');
-              localStorage.removeItem('grace_session_expires');
-            }
-          } catch (error) {
-            console.error('Session check failed:', error);
-          }
-        } else {
-          // Session expired, clear storage
-          localStorage.removeItem('grace_session_token');
-          localStorage.removeItem('grace_session_expires');
-        }
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      // If user changes (and it's not the first load), reset the room
+      if (firebaseUser && user && firebaseUser.uid !== user.uid) {
+        setRoomKey(prev => prev + 1);
       }
+      setFirebaseUser(user);
       setIsCheckingAuth(false);
-    };
-
-    checkSession();
-  }, []);
+    });
+    return () => unsubscribe();
+  }, [firebaseUser]);
 
   const onConnectButtonClicked = useCallback(async () => {
-    const url = new URL(
-      process.env.NEXT_PUBLIC_CONN_DETAILS_ENDPOINT ?? "/api/connection-details",
-      window.location.origin
-    );
-    if (userName) {
-      url.searchParams.append("participantName", userName);
+    if (!firebaseUser || !room || isConnecting) return;
+
+    try {
+      setIsConnecting(true);
+      console.log("Connecting: fetching token for user", firebaseUser.uid);
+      
+      // Force refresh the token to ensure it's fresh (not cached)
+      const idToken = await firebaseUser.getIdToken(true);
+      
+      // In production we run as `output: "export"` (static export), so Next.js API routes do not exist.
+      // Call the Token Server directly.
+      const url = new URL("http://178.156.186.166:3011/createToken");
+      
+      console.log("Connecting: calling token endpoint", url.toString());
+      const response = await fetch(url.toString(), {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${idToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({}),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Token fetch failed:", response.status, errorText);
+        throw new Error(`Failed to get connection details: ${response.statusText}`);
+      }
+
+      const connectionDetailsData: ConnectionDetails = await response.json();
+      console.log("Connecting: received details", {
+        serverUrl: connectionDetailsData.serverUrl,
+        roomName: connectionDetailsData.roomName,
+        participantName: connectionDetailsData.participantName
+      });
+
+      console.log("Connecting: calling room.connect...");
+      await room.connect(connectionDetailsData.serverUrl, connectionDetailsData.participantToken);
+      console.log("Connecting: room.connect successful, state:", room.state);
+    } catch (error) {
+      console.error("Connection failed error:", error);
+      alert("Failed to connect. Please try again.");
+    } finally {
+      setIsConnecting(false);
     }
-    const response = await fetch(url.toString());
-    const connectionDetailsData: ConnectionDetails = await response.json();
+  }, [room, firebaseUser, isConnecting]);
 
-    await room.connect(connectionDetailsData.serverUrl, connectionDetailsData.participantToken);
-  }, [room, userName]);
+  const handleLogout = useCallback(async () => {
+    try {
+      // Disconnect from room if connected
+      if (room && room.state === ConnectionState.Connected) {
+        await room.disconnect();
+      }
+      // Reset room key to force creation of a fresh Room instance for next session
+      setRoomKey(prev => prev + 1);
+      // Sign out from Firebase
+      await signOut(auth);
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  }, [room]);
 
-  // Show loading while checking authentication
-  if (isCheckingAuth) {
+  // Show loading while checking authentication or room not ready
+  if (isCheckingAuth || !room) {
     return (
       <div className="h-full flex items-center justify-center bg-white">
         <div className="text-[#B9965B] font-heading text-xl">Checking authentication...</div>
@@ -117,56 +153,9 @@ export default function Page() {
     );
   }
 
-  // Show password authentication if not authenticated
-  if (!isAuthenticated) {
-    return <PasswordAuth onAuthenticated={() => setIsAuthenticated(true)} />;
-  }
-
-  // Show name input if authenticated but no name entered
-  if (!hasEnteredName) {
-    return (
-      <div className="h-full min-h-[100svh] flex items-center justify-center bg-white relative">
-        <div className="absolute inset-0 flex items-center justify-center z-0 overflow-hidden">
-          <img 
-            src="/background.png" 
-            alt="AVA Background" 
-            className="opacity-90 w-full h-full object-cover sm:object-contain"
-            style={{ 
-              imageRendering: 'crisp-edges'
-            }}
-          />
-        </div>
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="z-10 bg-white/90 backdrop-blur-md p-6 sm:p-8 rounded-xl shadow-2xl border border-[#B9965B]/30 w-[calc(100%-2rem)] sm:w-96 text-center"
-        >
-          <h2 className="text-2xl font-heading font-bold text-[#B9965B] mb-6">Welcome to AVA</h2>
-          <div className="space-y-4">
-            <input
-              type="text"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-              placeholder="What should I call you?"
-              className="w-full px-4 py-3 rounded-lg bg-white border border-[#B9965B]/50 text-black placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#B9965B] font-body transition-all text-base"
-              autoFocus
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' && userName.trim()) {
-                  setHasEnteredName(true);
-                }
-              }}
-            />
-            <button
-              onClick={() => setHasEnteredName(true)}
-              disabled={!userName.trim()}
-              className="w-full py-3 px-6 bg-[#B9965B] hover:bg-[#a3844e] text-white rounded-lg font-heading font-medium tracking-wide transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
-            >
-              Continue
-            </button>
-          </div>
-        </motion.div>
-      </div>
-    );
+  // Show Firebase authentication if not authenticated
+  if (!firebaseUser) {
+    return <FirebaseAuth onAuthenticated={(user) => setFirebaseUser(user)} />;
   }
 
   return (
@@ -183,14 +172,19 @@ export default function Page() {
       </div>
       <RoomContext.Provider value={room}>
         <div className="relative z-10 w-full h-full flex flex-col overflow-hidden">
-          <SimpleChatAssistant onConnectButtonClicked={onConnectButtonClicked} userName={userName} />
+          <SimpleChatAssistant 
+            onConnectButtonClicked={onConnectButtonClicked} 
+            userName={firebaseUser.displayName || firebaseUser.email?.split('@')[0] || "User"}
+            onLogout={handleLogout}
+            isConnecting={isConnecting}
+          />
         </div>
       </RoomContext.Provider>
     </main>
   );
 }
 
-function SimpleChatAssistant(props: { onConnectButtonClicked: () => void, userName: string }) {
+function SimpleChatAssistant(props: { onConnectButtonClicked: () => void, userName: string, onLogout: () => void, isConnecting: boolean }) {
   const { state: agentState } = useVoiceAssistant();
   
   return (
@@ -207,11 +201,25 @@ function SimpleChatAssistant(props: { onConnectButtonClicked: () => void, userNa
             <div className="max-w-sm">
               <h3 className="text-2xl font-heading text-[#B9965B] mb-6 drop-shadow-md">Hello, {props.userName}</h3>
               <button
-                className="px-10 py-4 bg-[#B9965B] text-white rounded-full font-heading text-lg tracking-wider hover:bg-[#a3844e] transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap"
+                className={`px-10 py-4 bg-[#B9965B] text-white rounded-full font-heading text-lg tracking-wider transition-all shadow-xl whitespace-nowrap ${
+                  props.isConnecting ? "opacity-70 cursor-not-allowed" : "hover:bg-[#a3844e] hover:scale-105 active:scale-95"
+                }`}
                 onClick={() => props.onConnectButtonClicked()}
+                disabled={props.isConnecting}
               >
-                Start Chatting
+                {props.isConnecting ? "Connecting..." : "Start Chatting"}
               </button>
+              {/* Logout disabled as per request */}
+              {/* 
+              <div className="mt-4">
+                <button
+                  className="px-6 py-2 text-[#B9965B] hover:text-[#a3844e] transition-all text-sm font-body underline"
+                  onClick={props.onLogout}
+                >
+                  Logout
+                </button>
+              </div>
+              */}
             </div>
           </motion.div>
         )}
@@ -247,7 +255,18 @@ function SimpleChatAssistant(props: { onConnectButtonClicked: () => void, userNa
                   <ConnectionIndicator />
                   <h2 className="text-[#B9965B] font-heading font-bold text-lg">AVA</h2>
                 </div>
-                <div className="text-[#B9965B]/70 font-body text-xs sm:text-sm">Connected as {props.userName}</div>
+                <div className="flex items-center gap-3">
+                  <div className="text-[#B9965B]/70 font-body text-xs sm:text-sm">Connected as {props.userName}</div>
+                  {/* Logout disabled as per request */}
+                  {/* 
+                  <button
+                    onClick={props.onLogout}
+                    className="px-3 py-1 text-xs sm:text-sm text-[#B9965B] hover:text-white hover:bg-[#B9965B] border border-[#B9965B] rounded-md transition-all font-body"
+                  >
+                    Logout
+                  </button>
+                  */}
+                </div>
               </motion.div>
               
               <motion.div 

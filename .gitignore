@@ -108,6 +108,14 @@ bzsnapshot*.zip
 nginx_deployment/
 nginx_deployment.zip
 
+# Generated Cloudflare Backup
+voice-assistant-frontend-cloudflare/
+
+# Firebase and Secrets
+*-firebase-adminsdk-*.json
+*.json.bak
+.env*
+
 # Development documents
 documents_development/
 
@@ -137,10 +145,11 @@ node_modules/
 
 # Frontend backup directories
 voice-assistant-frontend copy/
-*_backup/
-*_copy/
-**/*_backup/
-**/*_copy/
+*backup*/
+*copy*/
+**/*backup*/
+**/*copy*/
+*_bak*/
 
 # Specific frontend exclusions
 voice-assistant-frontend/voice-assistant-frontend_backup copy/

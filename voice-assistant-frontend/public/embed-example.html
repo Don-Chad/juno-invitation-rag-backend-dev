@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AVA Embed Example</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 100%;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    .content {
+      background: white;
+      padding: 20px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    h2 {
+      color: #333;
+      border-bottom: 2px solid #B9965B;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .info-box {
+      background: #f8f9fa;
+      border-left: 4px solid #B9965B;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    /* Code snippet styling (for the copy box) */
+    pre {
+      background: #f4f4f4;
+      border: 1px solid #ddd;
+      color: #555;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.85rem;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      
+      <h2>Method 1: Direct Iframe</h2>
+      <div class="info-box">
+        <strong>Best for:</strong> Same domain or subdomain embedding. Simple and straightforward.
+      </div>
+
+      <iframe 
+        src="https://the-invitation-2.makecontact.io/embed"
+        width="100%"
+        height="900px"
+        style="border: none; border-radius: 0px;"
+        allow="microphone; camera; autoplay"
+        sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-popups-to-escape-sandbox">
+      </iframe>
+
+      <pre><code>&lt;!-- Copy this code into your Wordpress Custom HTML block --&gt;
+&lt;iframe 
+  src="https://the-invitation-2.makecontact.io/embed"
+  width="100%"
+  height="900px"
+  style="border: none; border-radius: 0px;"
+  allow="microphone; camera; autoplay"
+  sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-popups-to-escape-sandbox"&gt;
+&lt;/iframe&gt;</code></pre>
+
+    </div>
+  </div>
+</body>
+</html>

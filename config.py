@@ -82,6 +82,15 @@ DOCUMENT_SERVER_BASE_URL = "http://64.23.171.50:8888"  # Base URL for document d
 
 
 
+# ===========================
+# Active Memory Configuration
+# ===========================
+MEMORY_ENABLED = False  # Set to True to enable memory formation
+MEMORY_THRESHOLD_MESSAGES = 10  # Trigger memory formation after this many messages
+MEMORY_MAX_ITEMS = 100  # Maximum number of memories to store per user
+MEMORY_MODEL = "llama-3.3-70b-versatile"  # High quality model for extraction
+MEMORY_PII_PROTECTION = True  # Enable strict PII filtering
+
 # LLM Debug Settings
 PRINT_FULL_LLM_MESSAGE = False  # Set to True to enable detailed LLM message logging
 PRINT_LLM_TIMING = False  # Set to True to enable LLM timing metrics

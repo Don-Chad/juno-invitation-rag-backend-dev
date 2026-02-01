@@ -40,3 +40,4 @@ PyPDF2
 spacy
 python-docx
 annoy
+cryptography

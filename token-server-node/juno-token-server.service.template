@@ -1,0 +1,20 @@
+[Unit]
+Description=Juno The Invitation Token Server - DEVELOPMENT
+After=network.target
+
+[Service]
+Type=simple
+User=mark
+Group=mark
+WorkingDirectory=/home/mark/projects/14_livekit_server_juno_the_invitation_rag_backend_dev/token-server-node
+Environment="PATH=/home/mark/.nvm/versions/node/v22.20.0/bin:/usr/local/bin:/usr/bin:/bin"
+Environment="NODE_ENV=development"
+ExecStart=/home/mark/.nvm/versions/node/v22.20.0/bin/node dist/main.js
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=juno-token-server
+
+[Install]
+WantedBy=multi-user.target

@@ -34,3 +34,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+voice-assistant-frontend_backup*
+voice-assistant-frontend backup*

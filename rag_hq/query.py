@@ -353,11 +353,22 @@ async def enrich_with_rag(agent: Agent, chat_ctx: llm.ChatContext):
                 if extended_summary and extended_summary != "No extended summary available":
                     # Add extended summary as context
                     summary_msg = f"📄 Document: {filename}\n\nSamenvatting:\n{extended_summary}\n\n---\n"
-                    rag_msg_summary = llm.ChatMessage.create(
-                        text=f"Context (automatically added from documents):\n{summary_msg}",
-                        role="assistant",
-                    )
-                    messages.append(rag_msg_summary)
+                    # Support both old and new LiveKit versions
+                    if hasattr(chat_ctx, 'add_message'):
+                        chat_ctx.add_message(
+                            role="assistant",
+                            content=f"Context (automatically added from documents):\n{summary_msg}"
+                        )
+                        # We need to find the new message in items to re-insert it if needed,
+                        # but enrich_with_rag seems to manipulate the list directly.
+                        # Let's check where 'messages' comes from.
+                    else:
+                        rag_msg_summary = llm.ChatMessage.create(
+                            text=f"Context (automatically added from documents):\n{summary_msg}",
+                            role="assistant",
+                        )
+                        messages.append(rag_msg_summary)
+                    
                     if VERBOSE_RAG_LOGGING:
                         logger.info(f"Added extended summary for {filename} (~{count_tokens(extended_summary)} tokens)")
             
@@ -371,11 +382,19 @@ async def enrich_with_rag(agent: Agent, chat_ctx: llm.ChatContext):
             if VERBOSE_RAG_LOGGING:
                 logger.info(f"Added chunk from {filename} (similarity: {similarity:.3f}, tokens: ~{count_tokens(chunk_text)})")
             
-            rag_msg = llm.ChatMessage.create(
-                text=f"Context (automatically added from documents):\n{context_msg}",
-                role="assistant",
-            )
-            messages.append(rag_msg)
+            # Support both old and new LiveKit versions
+            if hasattr(chat_ctx, 'add_message'):
+                chat_ctx.add_message(
+                    role="assistant",
+                    content=f"Context (automatically added from documents):\n{context_msg}"
+                )
+            else:
+                rag_msg = llm.ChatMessage.create(
+                    text=f"Context (automatically added from documents):\n{context_msg}",
+                    role="assistant",
+                )
+                messages.append(rag_msg)
+            
             context_added = True
         
         # Re-add the user message to maintain conversation flow

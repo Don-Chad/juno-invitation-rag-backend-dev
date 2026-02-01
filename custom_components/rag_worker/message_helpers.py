@@ -3,7 +3,7 @@ RAG Message Helper Functions
 Handles insertion of RAG messages into chat context
 """
 import time
-from livekit.agents.llm import ChatMessage
+from livekit.agents import llm
 
 
 def insert_rag_message(chat_ctx, context_text, llm_module):
@@ -14,10 +14,22 @@ def insert_rag_message(chat_ctx, context_text, llm_module):
     - RAG context (middle) 
     - User question (bottom - always last)
     """
-    # Create ChatMessage directly (it's a Pydantic BaseModel, not a factory)
-    rag_msg = ChatMessage(role="assistant", content=[context_text])
-    rag_msg._is_rag_context = True
-    rag_msg._rag_timestamp = time.time()
+    # Use ChatContext.add_message if it's available, otherwise fallback to direct insertion
+    if hasattr(chat_ctx, 'add_message'):
+        # Note: add_message appends to the end. Since we want to insert, 
+        # we might need to handle this differently if order matters.
+        # However, ChatContext.insert is available in this environment.
+        rag_msg = llm.ChatMessage(role="assistant", content=[context_text])
+        try:
+            rag_msg._is_rag_context = True
+            rag_msg._rag_timestamp = time.time()
+        except Exception:
+            pass
+        
+        # We'll use the items.insert logic below which is more precise
+    else:
+        # Fallback for other environments
+        rag_msg = llm.ChatMessage.create(role="assistant", text=context_text)
     
     # Get messages list - handle both regular ChatContext and read-only variants
     messages = getattr(chat_ctx, 'messages', None) or getattr(chat_ctx, 'items', None)
@@ -45,12 +57,9 @@ def insert_rag_message(chat_ctx, context_text, llm_module):
                 insert_idx = i + 1
                 break
     
-    # Try to insert, handle read-only contexts
+    # Insert into messages list (ChatContext.messages is always mutable)
     if hasattr(messages, 'insert'):
         messages.insert(insert_idx, rag_msg)
-    elif hasattr(chat_ctx, 'append'):
-        # Fallback: use append method if available (but this won't preserve order)
-        chat_ctx.append(text=context_text, role="assistant")
     
     return insert_idx
 

@@ -74,6 +74,20 @@ async def get_http_session():
         except RuntimeError:
             logger.error("No running event loop available for HTTP session")
             raise
+
+        # If we are in the same process and there is an existing session object,
+        # try to close it before creating a new one to avoid leaking connections.
+        # (In a different process, we must never touch it.)
+        try:
+            if state.http_session_pid == current_pid and state.http_session and not state.http_session.closed:
+                await state.http_session.close()
+        except RuntimeError:
+            # Event loop might be closing/closed; we will just recreate next time.
+            pass
+        finally:
+            # Ensure we don't keep a reference to a dead session
+            state.http_session = None
+            state.http_session_pid = None
         
         timeout = aiohttp.ClientTimeout(
             total=5,
@@ -114,9 +128,32 @@ async def close_http_session():
         except RuntimeError:
             # Event loop already closed, session cleanup not needed
             pass
+        finally:
+            state.http_session = None
+            state.http_session_pid = None
     else:
         # Session belongs to different process, just forget it
         state.http_session = None
+        state.http_session_pid = None
+
+
+async def _reset_http_session(reason: str):
+    """Best-effort reset of the shared HTTP session.
+
+    Prefer closing (when owned by this process) to avoid leaking sockets.
+    Fall back to forgetting the reference if the event loop is not usable.
+    """
+    try:
+        logger.debug(f"Resetting HTTP session ({reason})")
+        await close_http_session()
+    except RuntimeError:
+        # Event loop might be closed; just drop the reference.
+        state.http_session = None
+        state.http_session_pid = None
+    except Exception:
+        # Never allow session reset errors to crash the worker.
+        state.http_session = None
+        state.http_session_pid = None
 
 
 async def create_embeddings(input_text, is_query=False):
@@ -242,12 +279,7 @@ async def create_embeddings(input_text, is_query=False):
                 
             except asyncio.TimeoutError:
                 logger.warning(f"Timeout while getting embeddings (attempt {attempt+1}/{max_retries+1})")
-                # Reset HTTP session on timeout to prevent "Unclosed client session" errors
-                try:
-                    state.http_session = None
-                    state.http_session_pid = None
-                except Exception:
-                    pass
+                await _reset_http_session("embedding timeout")
                 if attempt < max_retries:
                     await asyncio.sleep(retry_delay * (2 ** attempt))
                 else:
@@ -255,9 +287,7 @@ async def create_embeddings(input_text, is_query=False):
             except RuntimeError as e:
                 if "Event loop is closed" in str(e) or "closed event loop" in str(e).lower():
                     logger.warning(f"Event loop error detected - forcing HTTP session reset")
-                    # Force session recreation on next attempt
-                    state.http_session = None
-                    state.http_session_pid = None
+                    await _reset_http_session("event loop closed")
                     if attempt < max_retries:
                         await asyncio.sleep(retry_delay)
                         continue
@@ -265,12 +295,7 @@ async def create_embeddings(input_text, is_query=False):
                         return np.zeros(VECTOR_DIM, dtype=np.float16 if USE_FP16_EMBEDDINGS else np.float32)
                 else:
                     logger.error(f"Runtime error creating embeddings: {e}")
-                    # Reset session on other runtime errors too
-                    try:
-                        state.http_session = None
-                        state.http_session_pid = None
-                    except Exception:
-                        pass
+                    await _reset_http_session("runtime error")
                     return np.zeros(VECTOR_DIM, dtype=np.float16 if USE_FP16_EMBEDDINGS else np.float32)
             except Exception as e:
                 logger.error(f"Error creating embeddings from llama-server: {e}")

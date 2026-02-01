@@ -1,0 +1,779 @@
+# pack-refs with: peeled fully-peeled sorted 
+10e4a61cef46401ed33ce36679d8be1d75540f1d refs/remotes/origin/0.x
+bca153c72aa3a1b1b8ae4c51e6ff5e2c319ce435 refs/remotes/origin/0x-to--main
+fc6969f4e680893b1d1497e046fcdf51e220641a refs/remotes/origin/ShayneP/add-stt-prompt
+c52a68fb5c80e6f13415e8c14fa5ea3bafc5666f refs/remotes/origin/ac/gateway-generation-config
+15827749570b3740976eb7c918f7367b45643284 refs/remotes/origin/ac/transfer-connections
+c15c13df0ed1240b2cb616516496ae813135c783 refs/remotes/origin/add-groq
+87ffbad8d226ac938c459b892dc0656bb852f52e refs/remotes/origin/add-interrupt-example
+7b147bca41203bcab2ae62787ece8f5da356e882 refs/remotes/origin/aws-bedrock
+3b86478112f69b5401b43ca26c5ad7e7b75c68e2 refs/remotes/origin/bcherry/avatar-readmes
+d7f722250b641ca121144bacf74039245567a7dc refs/remotes/origin/bcherry/examples-readme
+b7cd863cf4fb48664fc941904e66dc0401736a32 refs/remotes/origin/brian/audio-toggle-for-dtmf-task
+ed3ec2f2d23d93006eb153757f01348a58880103 refs/remotes/origin/brian/diff-ifgw
+aba6370d54e8199d4ed2ae2ade3f055522eec0ae refs/remotes/origin/brian/dtmf
+9ba49df56eb8fc58d831e992c1c8c75d2e52e996 refs/remotes/origin/brian/dtmf-eval
+fcc2b342a974a0935a545c10ed45d0bb3751c32a refs/remotes/origin/brian/dtmf-send-tool
+d27324cac9592c2136c184ce8482151f8dee0343 refs/remotes/origin/brian/non-blocking-tool-call
+4fb42696940d29bdd123b57b34d1451b7cd03665 refs/remotes/origin/brian/receive-dtmf-input
+0d910e1073586106e96f5b8b5a26ba9c1fdfc8e0 refs/remotes/origin/cerebras-repro
+65dafe9359d28d9e5b351b42f36acca605e42c65 refs/remotes/origin/changeset-release/theo/cef-prep-release
+18fb51281fc81d239892c6d9ae1aa80abcd0c984 refs/remotes/origin/chenghaomou/agt-2179-streaming-stereo-audio
+e167312b8f8f2e00092e646251658495128ddaef refs/remotes/origin/copilot/fix-b75d2eec-b1b6-483b-9f6d-b1b569a3b9ee
+c14ca5de6780a94b1900050774d6de8a5342f0e4 refs/remotes/origin/create-plugin-guide
+f2e7fe97ead2c77e8e9dcda7c76d328afc58bedb refs/remotes/origin/cwilson/agent_1_test002
+d57883774616936329fe8be8d933a8daee8348ca refs/remotes/origin/cwilson/agents_1_docs
+0350e46becc414ade0f7a6583ebf5ac7bd00cf5d refs/remotes/origin/cwilson/simli_test
+2ac2eea73807c9cf8b6da2d946a0c99fb1a60193 refs/remotes/origin/cwilson/testing
+108ff4e0fa28cef75c2f96bf30428e74c5e38bde refs/remotes/origin/dan/kind-detail
+e6fa568c9ab2a707d657c6ddb7b9cae3fc329f80 refs/remotes/origin/debug-wav
+c09f1ffe19595a1d1b5f13838bf1ff42fb8c764f refs/remotes/origin/default-create-response
+175e7d9d0668a4640b23b7582f485ae5a02892bc refs/remotes/origin/dynamic-eot-delay
+84701ee93b7f335b26e386d22b0cf4b58c60dde6 refs/remotes/origin/emit-vars-in-traces
+fd77ac0bb8a5081a2984371b5f26e7503abf29cc refs/remotes/origin/eou_metrics
+63b4ca39de0f8922145bb09e9751d7c66e5190e3 refs/remotes/origin/feat/plugin-meta
+b728b4ca941bd7f877e2ada9d269d2ac3419d1e2 refs/remotes/origin/feat/stereo-audio
+713c5365482f87fa5238f997f0fea681825c68b6 refs/remotes/origin/feat/stereo-audio-recorder
+bbef8e7eb1fe35cea7ada8ff17067c8a88136672 refs/remotes/origin/fix-decoder
+23fc721b5d230c5e4e6442fdd9fe130a7a1cd661 refs/remotes/origin/fix-dg
+0b550c5f9d73d34270af22d5ced012ebca551e3c refs/remotes/origin/fix-eou
+b63f448245152ba79a4534501e09afc32148b92d refs/remotes/origin/fix-gemini-live
+ccea2abd521d418e1e48f16fd9c6d1843fa8c517 refs/remotes/origin/fix-get_job_context
+97b57945c62c2b9a9054d3d898d9f003e751fa01 refs/remotes/origin/fix-interrupt
+9a62f15655a79a7f54a6a1225c8b13fe02f2dd6b refs/remotes/origin/fix-neuphonic-test
+83f34fb209c752057c61cfc2ef5dfd41a74ac642 refs/remotes/origin/fix-transcriptions
+0e31df200c99350a7cc9ba5f72471a061c212970 refs/remotes/origin/fix-ws-timeout
+14ffd458f96ba09e6d16201e74f991e7ada54573 refs/remotes/origin/fix/update-turn-detector-readme-download-path
+b27687b4536e1d2801652742b45bad4ca5d1665c refs/remotes/origin/gemini-fps
+9ca6ff602757d12aca428fb0921e2eb21c1aa0c0 refs/remotes/origin/gemini-live-update-chat-context
+dc5c2581a975b764730e6e4e8b5324f8db7bee02 refs/remotes/origin/gemini-realtime-stt
+ca74ab80a76e05a07701bcc43bb1efda59a82b01 refs/remotes/origin/google-stt-default-model
+26a4162f16250da79fc3213caa38c2f828a1406a refs/remotes/origin/hamdan/add-restaurant-agent-readme
+f6a6cf8094024687f54aa3c7ef2e6e4ff9962e33 refs/remotes/origin/hamdan/expose-agent-properties
+a2288aaa6f12fc093879a0458dae6866e2a648ed refs/remotes/origin/hamdan/ignore-agent-instructions
+0a5dd83735128724df0f8f2e42a5a15de02323fd refs/remotes/origin/hamdan/restaurant-example
+e09049f7a9a38f9284bf5c0d050d89752f5b337d refs/remotes/origin/hamdan/trigger-phrase-agent-example
+ea43888fca9ace4d4859633148bbdab9b60a7075 refs/remotes/origin/ignore-cot-aws
+5166144f1619b1286936b5f15e25a377dfa79565 refs/remotes/origin/improve-error-handling
+2676e3f133057e8260c5b25c087e09479ff75acd refs/remotes/origin/load-debug
+9380596de824b46dcebee801259ff1265e9b49bb refs/remotes/origin/logger-improvements
+99626de5ff50e30deea8ca56da96702c873dd13f refs/remotes/origin/longc/add-xai-plugin
+34a804f555be942f227c7a52b6ce76db147dd678 refs/remotes/origin/longc/agent-output-transcribed
+18aad0c77509f22696ee40d7d90a2e88cf258aca refs/remotes/origin/longc/audio-echo-example
+54ea0f809d0fd08e28401a92b6165d726789c028 refs/remotes/origin/longc/avatar-example
+ead07e7fadfdc0c0e36422da482a75d5e089d449 refs/remotes/origin/longc/avatar-pause
+bc363057e75de4a65de0645ae4f6e18f718bfc52 refs/remotes/origin/longc/avatar-video-publish
+55768aeac8925b0bea48cd8e343ed3949bedee04 refs/remotes/origin/longc/aws-tts-stt
+de46eef1a850d5acaa00ad34b37e8cea9d4c7367 refs/remotes/origin/longc/build-for-py314
+9daa67e1931fac2dbdb455143954d54c574d6d7c refs/remotes/origin/longc/configurable-track-source
+f3f9aef6a9b30d044aab4761a29f0145e5d6b2db refs/remotes/origin/longc/datastream-io-clear-buffer-timeout
+cc7069d476fa7faef654d49eb1c13ff19b529837 refs/remotes/origin/longc/disconnect-room
+03bd65964d3824b4214d59daad970beb7aa95b85 refs/remotes/origin/longc/draft-workflow-design
+8efc6f3940bccb6858766dd5d2f086d7e4fd0b61 refs/remotes/origin/longc/dump-wav
+c7cb3e9d3b2ac669ceffa77a086b95419a8b21f5 refs/remotes/origin/longc/end-of-turn-flag
+99532c459fa267c945d55e2cf449412198a03d36 refs/remotes/origin/longc/ensuer-silence-for
+dcb5190bec24bb3c09a403c54d071d10f24138a4 refs/remotes/origin/longc/feat/av-sync
+5378e64a94f630ec100af0d44fdf433b217f444b refs/remotes/origin/longc/fix-schedule-done-speech
+dd5f2fd99f37dca3790ad27fcb503c0c21600154 refs/remotes/origin/longc/fix-structured-output-example
+15f2d5e84be61872d37d77384efcaf40abe90ca8 refs/remotes/origin/longc/fix-types-speechmatics
+b33b5d339e66761177e782f782d9997c51c1dd76 refs/remotes/origin/longc/fix-wait-for-playout
+17c442d5142eaa4e6c6532684c833980af75e683 refs/remotes/origin/longc/llm-flush-sentinal
+519956a83c67f93403d4dd914e6ef39f0b6aaee3 refs/remotes/origin/longc/local-inference-runner
+ecf6606d2974f55b8a380c848d13d10878867762 refs/remotes/origin/longc/multi-stage-agent
+29e36b1ab745011b36322ae986c7104d9dabf57a refs/remotes/origin/longc/patch-dump-input-audio
+84f276cea3f7cab053181a7f834cdc11a22c1599 refs/remotes/origin/longc/ppt-example
+1bed16e8350dc77cb2fd2a6ef96ef53b9086dc0e refs/remotes/origin/longc/pre-attach-buffer
+e95e07b64a509a22ae2b32f31f3ecda1d35c34a0 refs/remotes/origin/longc/pre-connect-audio
+2c134d219c8a1bdc12a9b9bb95f310c994ede2df refs/remotes/origin/longc/realtime-user-transcription
+87ebc0bb26bb1d3a0b063d70e07ad01934eb275d refs/remotes/origin/longc/restaurant-eval
+b75e1dbd2672601c96b719b8b77f1c1f627cb04e refs/remotes/origin/longc/resume-false-interruption
+89464b56a0598641cb63866c390f5ebc277e1286 refs/remotes/origin/longc/resume-temp
+7b1b47277cdbe1e6f93c1bff9ff5b6a3becfacca refs/remotes/origin/longc/retain-format-for-datestream-transcription
+e5852105d4cfdc6a5b1776222d14dbdf03ced370 refs/remotes/origin/longc/room-io-config
+40484f0091de57b8b2e4394709bcad0f09f1e24c refs/remotes/origin/longc/save-audio-wav
+546385165270798de796e9e8037d631a2ef7b03d refs/remotes/origin/longc/terminate-job-request
+0bb13df7b8160d7dc515350d8f06644ffb1a461f refs/remotes/origin/longc/tool-blocking
+f19e1ee91af6779c4a70344b54b2b3a8826bb428 refs/remotes/origin/longc/update-instrunctions
+5fc33b621d14f06eb1c682156b80ca9dafd047b8 refs/remotes/origin/longc/update-turn-detection
+aa7d22de361e877ec514e64adc40e361afc9eb29 refs/remotes/origin/longc/vad-transcription-sync
+e7698cc5c5fc7614d6931fc24b7e1fd742d6fd33 refs/remotes/origin/longc/wait-realtime-update-instruction
+446e3a9e930ec25c13ae587f14e34083b0a9ddb1 refs/remotes/origin/lukas/ds-sink-backup
+fde7dacaa26c33ecf41d8de786d022e663efd7b5 refs/remotes/origin/lukas/ogpt
+ba79d094f7cba399f3b7c1eaf6133942537a90c7 refs/remotes/origin/lukas/specify-transcription-forwarding
+2b0360dba8dd4ba5ab15929f62381f53a21733a1 refs/remotes/origin/main
+68952fbf3b2b1d2f092f8abbb0bc45ad06e58f77 refs/remotes/origin/michaelsolati/agt-1563-create-inworld-tts-plugin
+773906e7c7c2398a2e40190700c2c60c4d49d0a8 refs/remotes/origin/mike/bug-fix-deepgram-tts-mip_opt_out
+41e9c72c3b389313780a0b9560a3e33d283f2dd6 refs/remotes/origin/mistral-with-openai
+5b6b8924cab0157c00f7d30d2caa7969de021f3d refs/remotes/origin/move-check
+765c1adacc0a282a0ad7eec883f96c86190bea4d refs/remotes/origin/multisegments-tts
+09638611580220ff57a756de1e5a98c389ee7854 refs/remotes/origin/nbsp/fallback
+778445cf8989b8cc1496f19d31c7ac8d84e9df4b refs/remotes/origin/nbsp/flake
+27b9040d6d6cbea591be9841d9cad4417f974605 refs/remotes/origin/nbsp/timeouts
+2acfd30b958ea902f871cbc7c026b8bef7e83d64 refs/remotes/origin/neil/retry-tts
+33bbd4b37e656a246a3c323d5c8fc57dcaf51711 refs/remotes/origin/openai-stt
+c84252a792cc12c23e39df40c63f64e4ab28db14 refs/remotes/origin/perplexity_fix
+400637d1986d4cfb728e432aa467326e087eab93 refs/remotes/origin/resemble-tts
+c5691006481c367dfdde9acddadb5630a1edf621 refs/remotes/origin/reuse-tts-stream
+69c26402d62d17af2459eb46061b9c7897e39959 refs/remotes/origin/revert-1769-tobias/docs-deploy-workflow-fix
+5dd25488642c3c8342a9b04d9f626a413089e37a refs/remotes/origin/rm/cartesia-sonic-3-demo
+9206dc6e537d5f931def794a76eaa397767303f0 refs/remotes/origin/rm/deepgram-stt-param-test
+8dd7582f20ae1c4b1c4ca83095cc6086eb026a92 refs/remotes/origin/rm/deepgram-tts-test
+2a87ccc364572cb5fd48f670372853e4bc25dc6f refs/remotes/origin/shaynep/readme-grammar
+5d9f329ec42c266e0682e19bfb32c4775c49faa9 refs/remotes/origin/shubhra/expose-sip-parameters
+668042e689d6339708d14c3aa23750afaa75b83a refs/remotes/origin/shubhra/fix-tts-error-handling
+683bb5377ed45b13f188b9abe939ca5b81f718cd refs/remotes/origin/speech-debug
+9f6292973ce812d0948015e6d31d7281f81a79e3 refs/remotes/origin/speechify-plugin
+56f819bb5c73e14284a6350db96bd26d2b1042b9 refs/remotes/origin/stt-fallbackadapter-fix
+6d4ed3831237d63a67756e62316af86e6e854364 refs/remotes/origin/sync-chatctx
+1bdd0f9e2f10d96b66a307592559c8ae6e4eac6f refs/remotes/origin/theo/aec
+97ee8296af21faa555275ee82185f16f74496512 refs/remotes/origin/theo/avoid-tiny-frames-#2
+17583344dcb4f1515eec62947832f58fb04837ec refs/remotes/origin/theo/background-audio
+0a9c1a8ee9219fee6199633acbf8def7326d575c refs/remotes/origin/theo/better-cancel
+ebfc0b3dac415f6a3627a16b8a661c2b2fd4ac17 refs/remotes/origin/theo/cartesia-break
+3717a228480eb7be86d53d24141191f66fe45799 refs/remotes/origin/theo/disable-http-server
+15868b03bfda1c07cabb5d573dcec54c82a65d58 refs/remotes/origin/theo/end-call
+e606f73be28f34ebfc192f2e1e8da692186917ea refs/remotes/origin/theo/examples-cleanup
+1529e6a545d2fecc169b33cdba8182e9275cff6a refs/remotes/origin/theo/fix-11labs-tests
+7b019d470cad2dfb0c2a3db0195374772b96654a refs/remotes/origin/theo/fix-aec
+c3f4279db935a1739649d70b8dffbb66f40dc472 refs/remotes/origin/theo/fix-fnc-callings
+00d823b9c5aaad6a78bc6727c7cbce46d9777f75 refs/remotes/origin/theo/fix-recorderio
+a6f513b0e80d1cab7e2d5390323b767669918d11 refs/remotes/origin/theo/google-ignore-wav-header
+7744354dfdbacd95e1c58bd335ad33710ece7cc7 refs/remotes/origin/theo/idle-load
+678208bf09fff2d97d03ed8363f7fd82d3f63769 refs/remotes/origin/theo/io-proposal
+2e13a4f6b88f87f931310f5c27f53399fa3e5a6e refs/remotes/origin/theo/prom
+c0e77ef46843924555ccfe9056bdcea82888caf4 refs/remotes/origin/theo/pron
+713ebdc4adc71cf751386e8fbf63e656b3edfae5 refs/remotes/origin/theo/realtime-sync
+2ff905ca6a2756931867a9896d6eee1ea20b8b5a refs/remotes/origin/theo/rebase-bey
+f3066e4c1ff4d7a57ac29f60a9474c2526e72a93 refs/remotes/origin/theo/rebase-for-bey
+37b2d59770a0312831824b1cc54d324f40990ce3 refs/remotes/origin/theo/refactor-inference-api
+797aecf1a9b9d5a762a32af4613731833b4ea93e refs/remotes/origin/theo/rem-prewarm
+6e1dfc635a8777e12951823618bf1a9befbef959 refs/remotes/origin/theo/remove-large
+d7a8389b576f6b308abd72095727aeeda4e39d97 refs/remotes/origin/theo/revert-recovery
+286cc551ca1fd1d276beab209e3f27e391d87296 refs/remotes/origin/theo/test-azure-llm
+4521a0648f786952d606ec251284b1c804a7d94b refs/remotes/origin/theo/update-readme
+12277f2f6e5e871c64574fb3747d45a8fa87dada refs/remotes/origin/theo/v1.3
+dd1d861f0b05649252a79cd30859b07a4ea483ae refs/remotes/origin/theomonnom-patch-1
+e49cef8e69405b0fbd477e49c0826c388e876087 refs/remotes/origin/tina/get-credit-card-task
+7853e04e62f0676b8a4a8ef5dd7b797a6d7f3030 refs/remotes/origin/tina/heygen-plugin
+758fd13ee0b86eaf42439e0f6604ccee17c5d238 refs/remotes/origin/tina/lift-gemini-tts-streaming
+150137964ec5f92b8fa02a204ae5260175cda0f0 refs/remotes/origin/tobias/docs-deploy-workflow-fix
+3448f589bc2d80dc41c25bf69a7ddefa036f3a15 refs/remotes/origin/video-sampler
+8e029bad15f33912b967028466342820e66126b8 refs/tags/bey-plugin-0.0.0
+6363857ddf52c14c05af5ea22febad7713e99e12 refs/tags/livekit-agent@1.0.18
+0d608925d3981f9c3734b922ea8053063e6b35ef refs/tags/livekit-agent@1.0.19
+e0394d5658bc2e894a8cc76d7544e903a06911ee refs/tags/livekit-agent@1.0.20
+63916eb743c8194c8377aa0d6dee42e6297681c8 refs/tags/livekit-agents@0.10.0
+^420858cd2c0f072d638708b2a1d6d7c941a65d00
+4d08a26760b9278b105872beb0826c6b7c263971 refs/tags/livekit-agents@0.10.1
+^85e190e10fca4c1566c2f41f2bfd2948cde20254
+8128d23129b54e9b3fc8f2e7160f0ea2526ce9fa refs/tags/livekit-agents@0.10.2
+^1aa497ed3370599884b94b9374bc5a1cf47199c4
+8f8e4231b78d86d97c416e6b24fc4c7f9573defc refs/tags/livekit-agents@0.11.0
+^adf685e59d998339ca512435caa7726b0d2b8f87
+a2fc8dc1e930bc5951794bf1af7be2df1b23954f refs/tags/livekit-agents@0.11.1
+^22f06bf321532a92e12b7a469692f0c8e5503dd4
+0e4454fc2a7b149316c27ed52ac526dc46590c40 refs/tags/livekit-agents@0.11.2
+^90ca78780d8da1b6bba66c61af2e8350ada7fd97
+0bce3d2540f330007cdf6efbcd0682271b6a0f80 refs/tags/livekit-agents@0.11.3
+^238d0182aa909cc1602b2a7a5613cc229e0750e3
+e97826bfcdf0406f14e8db066cd4aa6ce384feb7 refs/tags/livekit-agents@0.12.0
+^8d4966859aca719712df590edeaa2682f952de50
+b88adc011ce443e9cb07ea2527c45cbde064fd8b refs/tags/livekit-agents@0.12.1
+^0283971729bb64df38620a85bff780d76b89f93c
+2e174c71fb214a1d42a94cde5e9d15a397613e4a refs/tags/livekit-agents@0.12.10
+^489f7867ecbddfaf7ed157c8b5288de335a338f1
+d218b6f96cdd56face3c36d27802394f9132289d refs/tags/livekit-agents@0.12.11
+^a874f378de3f6316827a6254f8f2c9eec9d2497a
+34e611c487247743d36118e4bb691a85b954a719 refs/tags/livekit-agents@0.12.12
+^7840fee86ddfaad02b7d3d52d663e9abd2016340
+bac197a2b043b3c19a99d77f331801ef53cda3dd refs/tags/livekit-agents@0.12.13
+^c2e3512366346759e9e4bc0e8efbbcbcab0b7d9f
+a5746a02af16a5a4f1df4c98e625d4739f84543f refs/tags/livekit-agents@0.12.14
+^bb0784c2cdd8c55ee102acfc67da712b46925add
+f63d47d450a2bb9b52cd506f4edf9d2f2e126731 refs/tags/livekit-agents@0.12.15
+^b51ce76bfcaca756c26919e047156f100154adc2
+7f300199f42f3fce82d7345f317efc8be97c5543 refs/tags/livekit-agents@0.12.16
+^4361e9b980e197f42be480c6e8d06dc3d2645383
+50db6274e0ff19cc5f5a4f75df7f1dd0834b54a4 refs/tags/livekit-agents@0.12.17
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+0a828ec5aef9bec10e3bf2feccd8a96a189a27b6 refs/tags/livekit-agents@0.12.18
+^6015e111eda63d0c9f33d594bf8366fdd3117461
+9b3b267ca9fe1f4bd08f90cff0f001761b371fdf refs/tags/livekit-agents@0.12.19
+^3734a6cd7b20d330631614fbd0a322325300cbdc
+4c9babe12b89e14c5098f3641b91440e0d3e4fb5 refs/tags/livekit-agents@0.12.2
+^57869fcbba3a480963fc1497bc47d8e1f263ecbb
+2e7eee4bac5a6570cfb4e1218ea6e50b7503d9d8 refs/tags/livekit-agents@0.12.20
+^8098d4a4ea1cb90d5ce0488c2b038982d47fd14f
+877b699a5824e3285adbdafe1aa8c8a46d496b6b refs/tags/livekit-agents@0.12.21
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+a07d6ce1254172ee17f8d73ce33bd74f651fdf68 refs/tags/livekit-agents@0.12.3
+^7941263f4919b46646becef71ee00bd42831440b
+4271af5eb5d6a95c87dba767041f67e4e017c329 refs/tags/livekit-agents@0.12.4
+^0f685455411b093140294b97e1f9dc153a3e9baa
+5e09fa1c0b9f31e107f4eda5e9ec3c6b52474241 refs/tags/livekit-agents@0.12.5
+^799a53d519cf0ab79e7ad00751d2aa69f7a311a4
+a5dc98f77c282cd4a4ad77562fff798a2778a9f2 refs/tags/livekit-agents@0.12.6
+^924b79e0a0305be5fa3c77cfbd8fcab63bfd7de7
+0c9067a48771c61934a97b710f12dadfd21d0c1c refs/tags/livekit-agents@0.12.7
+^1690677ce8aba5687c111db1f7c8817c2404224f
+a702ff65ea5fbb52d471621af0a2a4a920acb07c refs/tags/livekit-agents@0.12.8
+^f5c5f471bf7429f1f87b41a9481c93a18c1b05f5
+ac7df9a1237e16c29080b8387f4f66d52269d6f2 refs/tags/livekit-agents@0.12.9
+^5b8881e2e5ffce68d33759fb9fc008532e0d06da
+f9ed878cbaa537b8bd70758049d5db522f38108f refs/tags/livekit-agents@0.8.0
+^b4e09f6d6134576ad1d43836a331fdf3a4aa6580
+ada345e72aad44079a99f25c3fd8319b884234fc refs/tags/livekit-agents@0.8.1
+^ceeed1be7a44ada858c85af308232103ba743861
+64addc4473833eb3c5a49f69d88f33b0f93cfe40 refs/tags/livekit-agents@0.8.10
+^51523b27a07b987d3288d9c41120dd3a6b8b5542
+fa0b4a655ba0a289da09269a8c5c30d3dfcd63c8 refs/tags/livekit-agents@0.8.11
+^bb8244a24343173fa9fba603d25ac93465625c82
+dd4d69c63f39a2e0979037989eef9fe70af328a1 refs/tags/livekit-agents@0.8.12
+^ac1edf0f487de1474e63364f4038b60fb4b6f101
+6233c7cae4d3f83144b0757662a3e98480ae2e55 refs/tags/livekit-agents@0.8.2
+^de10042c363f1d4231d00c44e3b62762f22f13b5
+10eafad1a0b4f9ab1d0698a2b877c91d78cf18f3 refs/tags/livekit-agents@0.8.3
+^8ce90df03ec2e81dad0a56f66abb21b086704803
+218ddeb3d7f56b127f5998243234e7ee9b705883 refs/tags/livekit-agents@0.8.4
+^c9dc488f4ca030e69b591b611706fa2b483d567f
+e93cb162da499bda4de2594029f26d338f727d80 refs/tags/livekit-agents@0.8.5
+^a7098dc3daa06e80c56758244a0de4a13dd4adee
+5210781b1f15a13c10c0f41c5213b8ed2d045581 refs/tags/livekit-agents@0.8.6
+^087c7031a391d2208315eb63426fae5783d32fc9
+ef4be9e66d2a839be3b77b9237f50c6f7e2f5413 refs/tags/livekit-agents@0.8.7
+^b608bd82f552e35dc8b16ac1ce3f38a249d1cf92
+878f05aef2d3dbfbbcccec396da944811a00375b refs/tags/livekit-agents@0.8.8
+^3821f70ccc1bdceaa4a616320cc566b5be0696cc
+941563b2e22102ea88edbec0aa663d0a4c16d5bd refs/tags/livekit-agents@0.8.9
+^b6ad6632255506617f17950ce812db1ce32f4684
+e05dbd990d6aa3b891848ab5bc0e2951ec0bbc5a refs/tags/livekit-agents@0.9.0
+^84e06f19b84e0c8301f86ef3a597d7ab98549649
+f19d5a44674f41add90efb629a9b7b2b156e371b refs/tags/livekit-agents@0.9.1
+^569ffa1f14b91e494cb6f6abd59d00afe0d10a8f
+7655d2683aca80495eaced3edcae8c89778d2f67 refs/tags/livekit-agents@1.0.13
+b712ebd3565e11fd7acabd2a4e2d75cc8e91a75c refs/tags/livekit-agents@1.0.14
+517179071fdd5cee4467285b86fc8898a26042d1 refs/tags/livekit-agents@1.0.17
+45987b623fea99db5afb3647ad82aa6ffc36a34e refs/tags/livekit-agents@1.0.21
+1b688be8a3be37f428720e9ccb0dc4b3ba23c98c refs/tags/livekit-agents@1.0.22
+3df5afc62eb9c54b5b51bad003d874fbc069de4f refs/tags/livekit-agents@1.0.23
+eb017ef363824314ae914836dd27a6a6a45bab31 refs/tags/livekit-agents@1.1.0
+19f8dfe61215e1a4e63b47353f1a46d4ee1d8796 refs/tags/livekit-agents@1.1.2
+1efbe33d7a9b98cc8dd4eaf3604d778ad84e3a4e refs/tags/livekit-agents@1.1.4
+975cf0d885b3fa024d3c025c43dcd4c3df733929 refs/tags/livekit-agents@1.1.5
+f55d62ca1c9728ed79bb2649d6de42379b37a02a refs/tags/livekit-agents@1.1.6
+65380eada7e79172b5ee6fb0eaa5e3e458e6d1bd refs/tags/livekit-agents@1.1.7
+f7672c0fe91ee68639cc49136040616f69034ded refs/tags/livekit-agents@1.2.0
+b27fe4e9acf4688efd9d21c7ac36ffc3f184639d refs/tags/livekit-agents@1.2.11
+1bc1bf8b31c1342f7edfc67035fe6308d06447c6 refs/tags/livekit-agents@1.2.12
+ed3ec2f2d23d93006eb153757f01348a58880103 refs/tags/livekit-agents@1.2.13
+94b0e5051e24cf94e8fc0bd28268e877d79d9e40 refs/tags/livekit-agents@1.2.14
+0c5e40034b5cf29872273ccbf2802e5761b658a1 refs/tags/livekit-agents@1.2.15
+546d1d022195bc69d08b1ee6766533fa24f69a87 refs/tags/livekit-agents@1.2.16
+dd4c8c4bc1f08b4ac0ecdde8bda48525d5c92221 refs/tags/livekit-agents@1.2.17
+3190f4af55a52f143261b2f469d925b09a6898a1 refs/tags/livekit-agents@1.2.18
+9defafaf545842f1fa20128825fa8c190dc5f114 refs/tags/livekit-agents@1.2.2
+4a8aac291d60b85e50114ebee30f7c5bee6b87ac refs/tags/livekit-agents@1.2.3
+011de992268b00044f61a837acfc9b4d1de4005f refs/tags/livekit-agents@1.2.4
+6527aaf8822ac06fbd26ff15571e0e7b07679e32 refs/tags/livekit-agents@1.2.5
+aff74b221bf7bf9b99dc2373a66d7e017f1f2e91 refs/tags/livekit-agents@1.2.6
+d55c68b8e6168cb18abceeb6adce13dad542d5dc refs/tags/livekit-agents@1.2.7
+713988e3741a1498d373593c030c0fbd28262284 refs/tags/livekit-agents@1.2.8
+5fd278c90ad89b25258ee4f5e210b3226aa47bf1 refs/tags/livekit-agents@1.2.9
+d128a570f89e8f675ff067ba3c87a3f72c11af10 refs/tags/livekit-plugins-anthropic@0.1.1
+^3821f70ccc1bdceaa4a616320cc566b5be0696cc
+5befac1920781da25f800a85956e5f25ea4a850c refs/tags/livekit-plugins-anthropic@0.2.0
+^090b6dc52b3682dfcf268b5453a8b401df62f3e2
+30c5a0234d4b6c602f82876993921daa73f9898e refs/tags/livekit-plugins-anthropic@0.2.1
+^ac1edf0f487de1474e63364f4038b60fb4b6f101
+fcce1bed242bbc19941e891cef8202881e7e3574 refs/tags/livekit-plugins-anthropic@0.2.10
+^7840fee86ddfaad02b7d3d52d663e9abd2016340
+9a215dd70be8c68d793ce6a5e1d740f2ec6a522c refs/tags/livekit-plugins-anthropic@0.2.11
+^bb0784c2cdd8c55ee102acfc67da712b46925add
+03eea15dd236f44fa09827acce485138dadde521 refs/tags/livekit-plugins-anthropic@0.2.12
+^4361e9b980e197f42be480c6e8d06dc3d2645383
+ec10f74358458bbb34ecd30546f5e37a11275786 refs/tags/livekit-plugins-anthropic@0.2.13
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+b3ccecbe1e624c0dfdda3061902c80cace6842c6 refs/tags/livekit-plugins-anthropic@0.2.14
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+a600526e68d4d4f2acf530648ab449dd4cab2008 refs/tags/livekit-plugins-anthropic@0.2.2
+^adf685e59d998339ca512435caa7726b0d2b8f87
+b5995c75d5ed0e0253d1ab4964097281498557fd refs/tags/livekit-plugins-anthropic@0.2.3
+^22f06bf321532a92e12b7a469692f0c8e5503dd4
+528cd6681d1454ef039ed6f5354425adbc8cf868 refs/tags/livekit-plugins-anthropic@0.2.4
+^90ca78780d8da1b6bba66c61af2e8350ada7fd97
+6dd17ddbc00e7093dea1afcb8e9a22a68f215d9d refs/tags/livekit-plugins-anthropic@0.2.5
+^8d4966859aca719712df590edeaa2682f952de50
+daf53066688a7a3fa029286671054388e3ea844b refs/tags/livekit-plugins-anthropic@0.2.6
+^0283971729bb64df38620a85bff780d76b89f93c
+84e781d226085196f024e7ed140f04b941d16070 refs/tags/livekit-plugins-anthropic@0.2.7
+^57869fcbba3a480963fc1497bc47d8e1f263ecbb
+fb46b4120aa2938ec2d93c9a71ae07337804ad00 refs/tags/livekit-plugins-anthropic@0.2.8
+^7941263f4919b46646becef71ee00bd42831440b
+f166f44f15b0e24de6da6b75e83ec1122916b19b refs/tags/livekit-plugins-anthropic@0.2.9
+^924b79e0a0305be5fa3c77cfbd8fcab63bfd7de7
+dd1d30b5e1e870d6bf060649e9c241314fb9dfd3 refs/tags/livekit-plugins-assemblyai@0.1.0
+^90ca78780d8da1b6bba66c61af2e8350ada7fd97
+03d7e344fd5a6bee6fccf2216d1ab2b13c35cf1f refs/tags/livekit-plugins-assemblyai@0.1.1
+^8d4966859aca719712df590edeaa2682f952de50
+b1c05d3d0c0ca0c18bffea67f97da693227a79c8 refs/tags/livekit-plugins-assemblyai@0.2.1
+^0283971729bb64df38620a85bff780d76b89f93c
+f5ef7e42cbae48e1cded405a5fe7943d5078e724 refs/tags/livekit-plugins-assemblyai@0.2.2
+^924b79e0a0305be5fa3c77cfbd8fcab63bfd7de7
+7a8fefb4d6cf44502d55106b218f471003753117 refs/tags/livekit-plugins-assemblyai@0.2.3
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+e97f60eaf077156da852662d08a14209aac43254 refs/tags/livekit-plugins-assemblyai@0.2.4
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+70ff9cfbc7ca31e99d36a576ff0697f085fcdf1b refs/tags/livekit-plugins-aws@0.1.0
+^4361e9b980e197f42be480c6e8d06dc3d2645383
+0b481a9b8b9cc9f4b8c553ed14f04f28e0f5f50b refs/tags/livekit-plugins-aws@0.1.1
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+17af10aeff5598f69787d198623c2b48e7dabe9d refs/tags/livekit-plugins-aws@0.1.2
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+8f6ddef53544bff28d7966d47c72725578c85c58 refs/tags/livekit-plugins-azure@0.3.0
+^b4e09f6d6134576ad1d43836a331fdf3a4aa6580
+997fa305599a65bfdc8614f68c3a21fe5bf580f8 refs/tags/livekit-plugins-azure@0.3.1
+^ceeed1be7a44ada858c85af308232103ba743861
+be9b4b138c232dc8e62ee7d7be48e5de5bb53fa0 refs/tags/livekit-plugins-azure@0.3.2
+^84e06f19b84e0c8301f86ef3a597d7ab98549649
+15ac93353f48228b6f10208a37cffde85fc0977c refs/tags/livekit-plugins-azure@0.4.0
+^1aa497ed3370599884b94b9374bc5a1cf47199c4
+2bc980de86ad7b71b4b42ef1dd227e194c593281 refs/tags/livekit-plugins-azure@0.4.1
+^adf685e59d998339ca512435caa7726b0d2b8f87
+87a52d0f858e2e33678fcb10155f81f7d5034ce5 refs/tags/livekit-plugins-azure@0.4.2
+^90ca78780d8da1b6bba66c61af2e8350ada7fd97
+ba17cf33c9238bd4b6deffa8fe7eae4182bc627a refs/tags/livekit-plugins-azure@0.4.3
+^8d4966859aca719712df590edeaa2682f952de50
+c7f13a81c69a6ed82d63717f6d971550e9b64417 refs/tags/livekit-plugins-azure@0.4.4
+^0283971729bb64df38620a85bff780d76b89f93c
+8417451c8fb4c45f9ca0730c167574d0532ce517 refs/tags/livekit-plugins-azure@0.5.0
+^57869fcbba3a480963fc1497bc47d8e1f263ecbb
+5bf72412097bd2cddbd9a0b008b7308a58c9bbcb refs/tags/livekit-plugins-azure@0.5.1
+^7941263f4919b46646becef71ee00bd42831440b
+b637257fcb7223fbea80706519204c80d8d0229e refs/tags/livekit-plugins-azure@0.5.2
+^924b79e0a0305be5fa3c77cfbd8fcab63bfd7de7
+88c070f853965e48dbbdec070b9155816d3b108a refs/tags/livekit-plugins-azure@0.5.3
+^f5c5f471bf7429f1f87b41a9481c93a18c1b05f5
+14c2b932e995bb9f2a532b3c095d09db362a0f46 refs/tags/livekit-plugins-azure@0.5.4
+^bb0784c2cdd8c55ee102acfc67da712b46925add
+7410bfa8d9324fb5697a8cbad03da835514a58b3 refs/tags/livekit-plugins-azure@0.5.5
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+2c72dd4c9a787464b4929822429dc144968ab169 refs/tags/livekit-plugins-azure@0.5.6
+^167348b72cb73bcaebea156eacf3f053b4939985
+4f7391ddf2a3903baabe1e5059dcca287a947242 refs/tags/livekit-plugins-azure@0.5.7
+^33ea86e4e17c60502d7544db26b8089f8d80c53f
+3b22ea5f8c0c6c16511a401d1542c0353f815cda refs/tags/livekit-plugins-azure@0.5.8
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+d28df2d27b9e69e86921f76ae8bb238ebe030b0e refs/tags/livekit-plugins-browser@0.0.2
+^b608bd82f552e35dc8b16ac1ce3f38a249d1cf92
+b1a090b60b735a2e9400e14fb890ec5b3ac0f331 refs/tags/livekit-plugins-browser@0.0.3
+^adf685e59d998339ca512435caa7726b0d2b8f87
+be9b502c9c6adbb2bf4b0eae16f41552adf7b394 refs/tags/livekit-plugins-browser@0.0.4
+^0283971729bb64df38620a85bff780d76b89f93c
+79045aed7307644cb743df679438b98acb0d12e4 refs/tags/livekit-plugins-browser@0.0.5
+^7941263f4919b46646becef71ee00bd42831440b
+94940dee682a458a7a9c5fd97b8fad185ae666d9 refs/tags/livekit-plugins-browser@0.0.6
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+2e7fd669ccbf63dc13851c7d589984c56b664830 refs/tags/livekit-plugins-browser@0.0.7
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+79c2baee76e504b4a4ac4da35bb2932bb288616e refs/tags/livekit-plugins-cartesia@0.2.0
+^b4e09f6d6134576ad1d43836a331fdf3a4aa6580
+6e283cf7c006580b9bd2e33eaaba0f036d75c709 refs/tags/livekit-plugins-cartesia@0.3.0
+^a7098dc3daa06e80c56758244a0de4a13dd4adee
+6c0c0dd50bc7a2d9b0371ea904b2074669d9fed0 refs/tags/livekit-plugins-cartesia@0.4.1
+^087c7031a391d2208315eb63426fae5783d32fc9
+aa068b78810dd1a1ca88c07f7c6968e620d74714 refs/tags/livekit-plugins-cartesia@0.4.10
+^5633b73c77e770e1fc2c7cc2bdd1df95da9ce9da
+2179812e6feb94e21d8bcd43323fdfa495f00983 refs/tags/livekit-plugins-cartesia@0.4.11
+^167348b72cb73bcaebea156eacf3f053b4939985
+fdb7abdaa0ceeb280df67f3f59f159dda09fc858 refs/tags/livekit-plugins-cartesia@0.4.12
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+23ba2b5890129ae0388fcc71b29e38d8cb8fa681 refs/tags/livekit-plugins-cartesia@0.4.2
+^ac1edf0f487de1474e63364f4038b60fb4b6f101
+c3da0bfc453f0bdff2b1d1548c96fa8e6fb34ba0 refs/tags/livekit-plugins-cartesia@0.4.3
+^adf685e59d998339ca512435caa7726b0d2b8f87
+fcf6152b7d5d2550ce919fad50ceda0e77cb6b68 refs/tags/livekit-plugins-cartesia@0.4.4
+^8d4966859aca719712df590edeaa2682f952de50
+88cb6b9ed95425533e8b76263ec115c9a0cafcce refs/tags/livekit-plugins-cartesia@0.4.5
+^0283971729bb64df38620a85bff780d76b89f93c
+9422d07cc4ea44100e54133276bbc990d25405ee refs/tags/livekit-plugins-cartesia@0.4.6
+^f5c5f471bf7429f1f87b41a9481c93a18c1b05f5
+9f9f38af1e279e60e906acbeaa75ba04aadb382b refs/tags/livekit-plugins-cartesia@0.4.7
+^a874f378de3f6316827a6254f8f2c9eec9d2497a
+8360e808ba7d4c3758545c3625a7a389142dbc8c refs/tags/livekit-plugins-cartesia@0.4.8
+^4361e9b980e197f42be480c6e8d06dc3d2645383
+7c79279f2cea41048ee30c2cba543ff474e07e85 refs/tags/livekit-plugins-cartesia@0.4.9
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+c08ea7b1d825b40ce4c5ce0edf845ad6de2b194c refs/tags/livekit-plugins-deepgram@0.6.0
+^b4e09f6d6134576ad1d43836a331fdf3a4aa6580
+5b8fe2af90b6d874f363ff2dfb86d0581c18f452 refs/tags/livekit-plugins-deepgram@0.6.1
+^ceeed1be7a44ada858c85af308232103ba743861
+718999f9178538d4c3d88b33407d0f71b5c95b11 refs/tags/livekit-plugins-deepgram@0.6.10
+^8d11cc18178feebd8e552865e5e5cdcf082a9db8
+68e2678885108695eeffd2388525c68011fc4831 refs/tags/livekit-plugins-deepgram@0.6.11
+^238d0182aa909cc1602b2a7a5613cc229e0750e3
+65a5cecafe32019fa1c4af7b28760efdf75569bf refs/tags/livekit-plugins-deepgram@0.6.12
+^8d4966859aca719712df590edeaa2682f952de50
+e35b5eff03afd42b3c9c4145a52163c6026735fa refs/tags/livekit-plugins-deepgram@0.6.13
+^0283971729bb64df38620a85bff780d76b89f93c
+cf17b40859f9abda95937e07eac72bbe50d7df9a refs/tags/livekit-plugins-deepgram@0.6.14
+^57869fcbba3a480963fc1497bc47d8e1f263ecbb
+38a034af5c3201d7bacb8f9926d3ea9cfaa6c50f refs/tags/livekit-plugins-deepgram@0.6.15
+^7941263f4919b46646becef71ee00bd42831440b
+3ea1589afa498bd1a93ae4cbd25c90d52a3215c0 refs/tags/livekit-plugins-deepgram@0.6.16
+^924b79e0a0305be5fa3c77cfbd8fcab63bfd7de7
+498e0df3bc0ec4da791a9e0bbb7bb13f0c35b5ef refs/tags/livekit-plugins-deepgram@0.6.17
+^a874f378de3f6316827a6254f8f2c9eec9d2497a
+881acd26137bef631b39c294b63694f22b473e87 refs/tags/livekit-plugins-deepgram@0.6.18
+^7840fee86ddfaad02b7d3d52d663e9abd2016340
+754755650dc11f6b9bbd17aae5c02a4d5af5f24b refs/tags/livekit-plugins-deepgram@0.6.19
+^c2e3512366346759e9e4bc0e8efbbcbcab0b7d9f
+dc7d2fc6fe3f93f383cea728b260452f72dee9eb refs/tags/livekit-plugins-deepgram@0.6.2
+^8ce90df03ec2e81dad0a56f66abb21b086704803
+795761f851ad903b76941db5ed3d2d667a763f10 refs/tags/livekit-plugins-deepgram@0.6.20
+^4361e9b980e197f42be480c6e8d06dc3d2645383
+6e0c4c75425ec52f0c8ce4591ce96ddd2005d266 refs/tags/livekit-plugins-deepgram@0.6.3
+^c9dc488f4ca030e69b591b611706fa2b483d567f
+05bd05e63df7b6d9c5b35d5cf3851da6786ba9d8 refs/tags/livekit-plugins-deepgram@0.6.4
+^a7098dc3daa06e80c56758244a0de4a13dd4adee
+94e6001f3fbd85643fe5b710a88d4b844848f69e refs/tags/livekit-plugins-deepgram@0.6.5
+^087c7031a391d2208315eb63426fae5783d32fc9
+467eb9c612f278bb494ad745be67b908b0bc11bf refs/tags/livekit-plugins-deepgram@0.6.6
+^b6ad6632255506617f17950ce812db1ce32f4684
+63be5715819da7ab941788b556458bc8827cd47c refs/tags/livekit-plugins-deepgram@0.6.7
+^ac1edf0f487de1474e63364f4038b60fb4b6f101
+f64870eb2f752d15900722bb0aeaeb842ac175e2 refs/tags/livekit-plugins-deepgram@0.6.8
+^85e190e10fca4c1566c2f41f2bfd2948cde20254
+b68d237fcffc11fd8d15239be2ecedbf737353c9 refs/tags/livekit-plugins-deepgram@0.6.9
+^adf685e59d998339ca512435caa7726b0d2b8f87
+568545943409208acba62da5368dfffaca77779d refs/tags/livekit-plugins-deepgram@0.7.0
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+e76e5765ed9d51183e16b5ea6704d960895684b2 refs/tags/livekit-plugins-deepgram@0.7.1
+^167348b72cb73bcaebea156eacf3f053b4939985
+6839ea6c44e4fe7e8d93b933d9f9d3d8a2b67f24 refs/tags/livekit-plugins-deepgram@0.7.2
+^d9c50999b17b4ddad126c3c5204f8368c6f78ce2
+5eb57e2e133447e0c701bcdd49fc3e09c2986ab0 refs/tags/livekit-plugins-deepgram@0.7.3
+^8098d4a4ea1cb90d5ce0488c2b038982d47fd14f
+21f316afd1cfd0a7907d07b094b6c4ce25b91a6b refs/tags/livekit-plugins-deepgram@0.7.4
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+9fbda4fb737d8c685f990eb8a5e8b11458af28ea refs/tags/livekit-plugins-elevenlabs@0.7.0
+^b4e09f6d6134576ad1d43836a331fdf3a4aa6580
+d8ed56692745767037c4425e2f5398eb5d7e16c6 refs/tags/livekit-plugins-elevenlabs@0.7.1
+^ceeed1be7a44ada858c85af308232103ba743861
+1023cc2193f21f64c01dd467070be8e326ca0326 refs/tags/livekit-plugins-elevenlabs@0.7.10
+^f5c5f471bf7429f1f87b41a9481c93a18c1b05f5
+68c71b1601b1670885c41769817c1173b11b6bb4 refs/tags/livekit-plugins-elevenlabs@0.7.11
+^5b8881e2e5ffce68d33759fb9fc008532e0d06da
+c7db0082c42ee49ef2b7a57593e415c71861ab5a refs/tags/livekit-plugins-elevenlabs@0.7.12
+^a874f378de3f6316827a6254f8f2c9eec9d2497a
+fc63da1da7a2151f30ff0d591fb6406fb3b00ff9 refs/tags/livekit-plugins-elevenlabs@0.7.13
+^7840fee86ddfaad02b7d3d52d663e9abd2016340
+490c7298497a4bcb0d8e31d2912f87a7b2384ae3 refs/tags/livekit-plugins-elevenlabs@0.7.14
+^4361e9b980e197f42be480c6e8d06dc3d2645383
+df42aef8cf3641e06b963b63afa17e6f6f42d40e refs/tags/livekit-plugins-elevenlabs@0.7.2
+^c9dc488f4ca030e69b591b611706fa2b483d567f
+e9f197e702c17ca71da71fb83b091b729ff6c782 refs/tags/livekit-plugins-elevenlabs@0.7.3
+^a7098dc3daa06e80c56758244a0de4a13dd4adee
+1d28c862c75025aa482583d86f423d0a9f5eadea refs/tags/livekit-plugins-elevenlabs@0.7.4
+^bb8244a24343173fa9fba603d25ac93465625c82
+21d2a8344688d462d93acd6ed8e90c349fe3153b refs/tags/livekit-plugins-elevenlabs@0.7.5
+^84e06f19b84e0c8301f86ef3a597d7ab98549649
+5b2eefc4aba52ce181d0a8c9ef0c39be0946640b refs/tags/livekit-plugins-elevenlabs@0.7.6
+^adf685e59d998339ca512435caa7726b0d2b8f87
+291ae70d41114a02cfa06a67a1914642e2f8ed02 refs/tags/livekit-plugins-elevenlabs@0.7.7
+^22f06bf321532a92e12b7a469692f0c8e5503dd4
+c07cb28d4279ff53d313cab32be2172c4a92d9b3 refs/tags/livekit-plugins-elevenlabs@0.7.8
+^8d4966859aca719712df590edeaa2682f952de50
+f72051d27dff0f46e1bdaceaab4ddac8581bb2de refs/tags/livekit-plugins-elevenlabs@0.7.9
+^0283971729bb64df38620a85bff780d76b89f93c
+f27149e279dfd0e31751dd8507b5aa76df8851f1 refs/tags/livekit-plugins-elevenlabs@0.8.0
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+73b71d490860ced5ea6bbb9903cfaaecfd436872 refs/tags/livekit-plugins-elevenlabs@0.8.1
+^167348b72cb73bcaebea156eacf3f053b4939985
+eedb73f5ec8dffdf99e74005c1307c2468b82820 refs/tags/livekit-plugins-elevenlabs@0.8.2
+^4613201467d7b72a3492f7429e3239acf095fbe6
+19af08ff3d20a98de15173625b78fe90aa787509 refs/tags/livekit-plugins-elevenlabs@0.8.3
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+d89a7718255f7d3a21e13b1b057418f3e466d1f9 refs/tags/livekit-plugins-fal@0.2.0
+^8d11cc18178feebd8e552865e5e5cdcf082a9db8
+bf3584182fd87e33548bf2d757c4c42389b3858f refs/tags/livekit-plugins-fal@0.2.1
+^8d4966859aca719712df590edeaa2682f952de50
+482d7464d0e422126d494ca0af0799f9144452d7 refs/tags/livekit-plugins-fal@0.2.2
+^0283971729bb64df38620a85bff780d76b89f93c
+8819d5a842b3dcaab5378b970f1ea1b941468a06 refs/tags/livekit-plugins-fal@0.2.3
+^f5c5f471bf7429f1f87b41a9481c93a18c1b05f5
+83fb0e343749ac00f6c2eed2e9a8802322c777b9 refs/tags/livekit-plugins-fal@0.2.4
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+9fad8ee74361812e6ee83b5886e738261bdd90f8 refs/tags/livekit-plugins-fal@0.2.5
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+3b3a48c0aea4ea305658ee133a2d22e5e333fc3f refs/tags/livekit-plugins-google@0.10.0
+^5b8881e2e5ffce68d33759fb9fc008532e0d06da
+ccce926800dd2fb8f2ab186fd294edeb98dc177f refs/tags/livekit-plugins-google@0.10.1
+^489f7867ecbddfaf7ed157c8b5288de335a338f1
+66a37f6e7643cc1de8e565dad4ca6b0fe517c9bb refs/tags/livekit-plugins-google@0.10.2
+^a874f378de3f6316827a6254f8f2c9eec9d2497a
+1df8fd2ca9fb6c4a9483c7771b6502281fc3cab1 refs/tags/livekit-plugins-google@0.10.3
+^7840fee86ddfaad02b7d3d52d663e9abd2016340
+13fd4ae389c7a9cee1ee0570d9bd4d30677ffb2a refs/tags/livekit-plugins-google@0.10.4
+^c2e3512366346759e9e4bc0e8efbbcbcab0b7d9f
+015325010b25a3e3bcd9fb571bc9378015a2d9c4 refs/tags/livekit-plugins-google@0.10.5
+^bb0784c2cdd8c55ee102acfc67da712b46925add
+8e1730abc74ab499db0f006d1d89bc86a28a1865 refs/tags/livekit-plugins-google@0.10.6
+^4361e9b980e197f42be480c6e8d06dc3d2645383
+b0642594017e83e86082e70f82b9e595686ddc39 refs/tags/livekit-plugins-google@0.11.0
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+97631bed7eecfb90a2589febb153edbd8f4fcd11 refs/tags/livekit-plugins-google@0.11.1
+^167348b72cb73bcaebea156eacf3f053b4939985
+2880da16cdaff415b5fbe2fc1971a2716b4816c8 refs/tags/livekit-plugins-google@0.11.2
+^6015e111eda63d0c9f33d594bf8366fdd3117461
+b3b3ef9e216908f687ac9dcfb10fcda3b5dade7b refs/tags/livekit-plugins-google@0.11.3
+^8098d4a4ea1cb90d5ce0488c2b038982d47fd14f
+9cc7883f8f86763be42c84a96ab3744ad7673e7d refs/tags/livekit-plugins-google@0.11.4
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+33b29d253a3932a736fd5839eb2c3b8b596c75cd refs/tags/livekit-plugins-google@0.11.5
+^10e4a61cef46401ed33ce36679d8be1d75540f1d
+05e536426dbf17d41e2e2251f0262a78814e34f6 refs/tags/livekit-plugins-google@0.6.0
+^b4e09f6d6134576ad1d43836a331fdf3a4aa6580
+209217bf3ea989d7ab5259e785b7e015ded70351 refs/tags/livekit-plugins-google@0.6.1
+^ceeed1be7a44ada858c85af308232103ba743861
+2287480b09ef8496e1055649c01c82e715ed32c6 refs/tags/livekit-plugins-google@0.6.2
+^a7098dc3daa06e80c56758244a0de4a13dd4adee
+cfdc84963f70ccbd1c4e3ac1c6542489457b803c refs/tags/livekit-plugins-google@0.6.3
+^b6ad6632255506617f17950ce812db1ce32f4684
+646ccb012834235dff276e7df2ee299f86283d8c refs/tags/livekit-plugins-google@0.7.0
+^bb8244a24343173fa9fba603d25ac93465625c82
+5b16d9f7158dc37ba13a356f0722d9cc64ec0d74 refs/tags/livekit-plugins-google@0.7.1
+^84e06f19b84e0c8301f86ef3a597d7ab98549649
+7f5545aa6ceb3f5b9f4e9dcd0b785a2a1c57f17b refs/tags/livekit-plugins-google@0.7.2
+^adf685e59d998339ca512435caa7726b0d2b8f87
+0a0638bfca4b58923646a59e2603308ca2090118 refs/tags/livekit-plugins-google@0.7.3
+^90ca78780d8da1b6bba66c61af2e8350ada7fd97
+38985c13f7f198991d5b7cec23598072bfc8d754 refs/tags/livekit-plugins-google@0.8.0
+^8d4966859aca719712df590edeaa2682f952de50
+ff6ca0a1d89201c208c07904cb4792f5d7bbe098 refs/tags/livekit-plugins-google@0.8.1
+^0283971729bb64df38620a85bff780d76b89f93c
+34a7b14d16ab7ba136a561fc0851183aeeabe6e1 refs/tags/livekit-plugins-google@0.9.0
+^924b79e0a0305be5fa3c77cfbd8fcab63bfd7de7
+e08cb1caac5ecdffdd11cdf714a856fb5c926f0d refs/tags/livekit-plugins-google@0.9.1
+^f5c5f471bf7429f1f87b41a9481c93a18c1b05f5
+ee9e77e335634f62d49949a4d668a96a1ebad48b refs/tags/livekit-plugins-groq@0.1.1
+^6015e111eda63d0c9f33d594bf8366fdd3117461
+cdc825d1196a97f15102f48cf53dc3d4edc7f96f refs/tags/livekit-plugins-groq@0.1.2
+^d9c50999b17b4ddad126c3c5204f8368c6f78ce2
+c41f5f64ee763fdaee9ca2a379b26de8dcaa8425 refs/tags/livekit-plugins-groq@0.1.3
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+85d655ce3bf9202e4df3543ff8e0c8ab2d18ad9d refs/tags/livekit-plugins-llama-index@0.1.1
+^85e190e10fca4c1566c2f41f2bfd2948cde20254
+0cb4afe5e40e9f3c43aae215b1d131e172916229 refs/tags/livekit-plugins-llama-index@0.2.0
+^adf685e59d998339ca512435caa7726b0d2b8f87
+3efd7a6d6145f4c66ceeb99eb030f7e0c62e2f1d refs/tags/livekit-plugins-llama-index@0.2.1
+^8d4966859aca719712df590edeaa2682f952de50
+914dd43bbfb50409bb555fd7e49129ca85778c10 refs/tags/livekit-plugins-llama-index@0.2.2
+^0283971729bb64df38620a85bff780d76b89f93c
+4f03107b57bf17dafdbfc25866e8bd7689034cf7 refs/tags/livekit-plugins-llama-index@0.2.3
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+1c2a67a76bfdbf74beab38b366a405ce14dc165e refs/tags/livekit-plugins-llama-index@0.2.4
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+bf440c87d2f0d7939286e0708bee835167cd5841 refs/tags/livekit-plugins-minimal@0.2.0
+^b4e09f6d6134576ad1d43836a331fdf3a4aa6580
+3d4e6ad2f0f594d9560125d59edc26e7d59d7ef4 refs/tags/livekit-plugins-minimal@0.2.1
+^0283971729bb64df38620a85bff780d76b89f93c
+d7893f4d77e1e0a8c4453e3663154241e602d448 refs/tags/livekit-plugins-minimal@0.2.2
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+d08ae1c3e90066c70031941bdef81e83cf623d46 refs/tags/livekit-plugins-minimal@0.2.3
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+42ba1debaf1968649d3eceafb1b909350514b9bc refs/tags/livekit-plugins-neuphonic@0.1.0
+^7ae39a2e36c0b4711a60b70c2526e0869c4cc0e8
+4c12871d5470fa1a6256edf9c670298fb0858cb1 refs/tags/livekit-plugins-neuphonic@0.1.1
+^167348b72cb73bcaebea156eacf3f053b4939985
+d3944f34f9a98fd3cb0528a9b1e9bbbe7defffc4 refs/tags/livekit-plugins-neuphonic@0.1.2
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+034cb3799c509b8222fae0e110684035da8d9d43 refs/tags/livekit-plugins-nltk@0.7.0
+^b4e09f6d6134576ad1d43836a331fdf3a4aa6580
+eb7bda661fe42238234b35fd41d1df11cafea0e7 refs/tags/livekit-plugins-nltk@0.7.1
+^087c7031a391d2208315eb63426fae5783d32fc9
+bc1b2fd337f64b3b8ab821dfb75686a45d748c48 refs/tags/livekit-plugins-nltk@0.7.2
+^b608bd82f552e35dc8b16ac1ce3f38a249d1cf92
+93c7919bafacb848a6ae21b202a0ba214b7d3565 refs/tags/livekit-plugins-nltk@0.7.3
+^0283971729bb64df38620a85bff780d76b89f93c
+203ac7c3b804345957a451b06b26b535f6e23248 refs/tags/livekit-plugins-nltk@0.7.4
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+01ca64ba423249418319d46c9436298920fd7cbe refs/tags/livekit-plugins-nltk@0.7.5
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+2b40528f9abdcdd5a18524e7bc71b9557c193f84 refs/tags/livekit-plugins-openai@0.10.0
+^420858cd2c0f072d638708b2a1d6d7c941a65d00
+99f30be732e2ce964d3c782ea8be475590e6dd91 refs/tags/livekit-plugins-openai@0.10.1
+^1802d3466f8b56e1ec16f1bfc9f75f7960ed62cc
+fac7b9b31681177de0d22ce4e153b551c2f53682 refs/tags/livekit-plugins-openai@0.10.10
+^57869fcbba3a480963fc1497bc47d8e1f263ecbb
+667ce69ec4673a9a464efcd1fc6c5c83888383ea refs/tags/livekit-plugins-openai@0.10.11
+^7941263f4919b46646becef71ee00bd42831440b
+979773f88321cb4d87c20fb4ed41f81d3f3e66a4 refs/tags/livekit-plugins-openai@0.10.12
+^0f685455411b093140294b97e1f9dc153a3e9baa
+109314a61952fdd59236c709fe15c2906b2a33b6 refs/tags/livekit-plugins-openai@0.10.13
+^924b79e0a0305be5fa3c77cfbd8fcab63bfd7de7
+e5e4372b1b38382f74dda54dbe4688f662a8aedb refs/tags/livekit-plugins-openai@0.10.14
+^1690677ce8aba5687c111db1f7c8817c2404224f
+127c490402b7de2f0a8fce7cd3c7e4053633b1b4 refs/tags/livekit-plugins-openai@0.10.15
+^f5c5f471bf7429f1f87b41a9481c93a18c1b05f5
+3222cc016fc8bc20fcb787b7f5248bb1e5033e15 refs/tags/livekit-plugins-openai@0.10.16
+^5b8881e2e5ffce68d33759fb9fc008532e0d06da
+6ed4c162d057edaafc0e58576899e24eba63de65 refs/tags/livekit-plugins-openai@0.10.17
+^a874f378de3f6316827a6254f8f2c9eec9d2497a
+04ff74abdac5af1f48dd318063f1009192f105c8 refs/tags/livekit-plugins-openai@0.10.18
+^7840fee86ddfaad02b7d3d52d663e9abd2016340
+d0442ce90bab5cca5e2f5e05c51b19047037f9dc refs/tags/livekit-plugins-openai@0.10.19
+^c2e3512366346759e9e4bc0e8efbbcbcab0b7d9f
+b44312846aa10b254e4bae52d15b223b13263825 refs/tags/livekit-plugins-openai@0.10.2
+^5a6f2d99156849e5e5f7c8a06e3543e2afd7bb4a
+c140012dc58f72865807f56a201e6768b10314b3 refs/tags/livekit-plugins-openai@0.10.3
+^85e190e10fca4c1566c2f41f2bfd2948cde20254
+6046e764f18a6deb12a736f987c9045a42bef929 refs/tags/livekit-plugins-openai@0.10.4
+^1aa497ed3370599884b94b9374bc5a1cf47199c4
+94252a9923e07bcfa113df0256554617a6add844 refs/tags/livekit-plugins-openai@0.10.5
+^adf685e59d998339ca512435caa7726b0d2b8f87
+022b1932ddb78b501778ace8a9f203edae5aa759 refs/tags/livekit-plugins-openai@0.10.6
+^90ca78780d8da1b6bba66c61af2e8350ada7fd97
+d549e3c2125b4ce552ffd319d62bb7aa5d71afdb refs/tags/livekit-plugins-openai@0.10.7
+^8d11cc18178feebd8e552865e5e5cdcf082a9db8
+4d6332d1e8ff0ce84e751768f861da007e6dd9cf refs/tags/livekit-plugins-openai@0.10.8
+^8d4966859aca719712df590edeaa2682f952de50
+ac100ba64e21ca252990ff646e4d2e18651928eb refs/tags/livekit-plugins-openai@0.10.9
+^0283971729bb64df38620a85bff780d76b89f93c
+ab86628b68f00ba9dce5e6fdc519c6947aec707b refs/tags/livekit-plugins-openai@0.11.0
+^bb0784c2cdd8c55ee102acfc67da712b46925add
+86f5a92b33fb20cc8ededbd2166a39ed004f53e2 refs/tags/livekit-plugins-openai@0.11.2
+^e0081f1d06a1e0785f51af8c45e67ee7d87da848
+03299c25bf40fb54b5abdbdd3b6f007ccbdbed90 refs/tags/livekit-plugins-openai@0.11.3
+^167348b72cb73bcaebea156eacf3f053b4939985
+7f8e4345c7849d77860f092ac8fc50002b704d76 refs/tags/livekit-plugins-openai@0.12.0
+^6015e111eda63d0c9f33d594bf8366fdd3117461
+428a60f627589711890c330d2d7ed0c12bddb08d refs/tags/livekit-plugins-openai@0.12.1
+^d9c50999b17b4ddad126c3c5204f8368c6f78ce2
+1c38a8bcab0a0631e8703fca3e5e69e7d824fad0 refs/tags/livekit-plugins-openai@0.12.2
+^2f8854f1635b24d62da5d898f930e3c7935aa5fa
+a6d7a51b56b252cdf262e91411c3298be33e4cff refs/tags/livekit-plugins-openai@0.12.3
+^3734a6cd7b20d330631614fbd0a322325300cbdc
+8c5a75a008e0484fde3d89d8cac15b226722d92a refs/tags/livekit-plugins-openai@0.12.4
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+d75ad69be1afdcbea9951ab6feb72660cf09a0d0 refs/tags/livekit-plugins-openai@0.7.0
+^b4e09f6d6134576ad1d43836a331fdf3a4aa6580
+ea3589061d4d0581414bb48e4c9e52b9285a57b4 refs/tags/livekit-plugins-openai@0.7.1
+^ceeed1be7a44ada858c85af308232103ba743861
+f25709ac1fa4d60ebf1156227a1b9d082f26a1e9 refs/tags/livekit-plugins-openai@0.8.0
+^c9dc488f4ca030e69b591b611706fa2b483d567f
+47594825996df76c16f7a8fe2ac6a981a43dc636 refs/tags/livekit-plugins-openai@0.8.1
+^087c7031a391d2208315eb63426fae5783d32fc9
+1fe8a791ca42509e9d453d01c532a4730e0d1132 refs/tags/livekit-plugins-openai@0.8.2
+^bb8244a24343173fa9fba603d25ac93465625c82
+e597977e77a43a3c9f1e929e8fabfc313dfed4eb refs/tags/livekit-plugins-openai@0.8.3
+^ac1edf0f487de1474e63364f4038b60fb4b6f101
+2df763194dabf690c49938628b684f0a73f3463b refs/tags/livekit-plugins-openai@0.8.4
+^84e06f19b84e0c8301f86ef3a597d7ab98549649
+b2d327edc3ac6a020d92a9487ed735cfe5747abb refs/tags/livekit-plugins-openai@0.8.5
+^569ffa1f14b91e494cb6f6abd59d00afe0d10a8f
+4f03c30088efe5496af899bd57ee1cf55451bf5a refs/tags/livekit-plugins-openai@1.0.0
+^4361e9b980e197f42be480c6e8d06dc3d2645383
+99cc707ee705895d636622cf43d20b1a55b041d1 refs/tags/livekit-plugins-openai@1.0.1
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+63431fe7c85b496402aca59967c6e7ed23ad51a4 refs/tags/livekit-plugins-playai@1.0.10
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+a23c1efad6c8b1bdd9126245d0f9a683e799276d refs/tags/livekit-plugins-playai@1.0.4
+^924b79e0a0305be5fa3c77cfbd8fcab63bfd7de7
+814d34bb6a1d8e572080e70b67227230821fceda refs/tags/livekit-plugins-playai@1.0.5
+^f5c5f471bf7429f1f87b41a9481c93a18c1b05f5
+66e4f1232501aef9931c8adecede2e068f6f7993 refs/tags/livekit-plugins-playai@1.0.6
+^5b8881e2e5ffce68d33759fb9fc008532e0d06da
+b265241006f716948987fcf3f56bd5da5d5e78c0 refs/tags/livekit-plugins-playai@1.0.7
+^a874f378de3f6316827a6254f8f2c9eec9d2497a
+e7f745fffa3ea10ac2397f80e43fc3e9331f9ce6 refs/tags/livekit-plugins-playai@1.0.8
+^4361e9b980e197f42be480c6e8d06dc3d2645383
+0cb262f0cd765e21915e899caa1cf4a059ef738b refs/tags/livekit-plugins-playai@1.0.9
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+ecc9f37405ab6bb6a5a2d4b78c3e36c299a531a6 refs/tags/livekit-plugins-playht@1.0.0
+^8c856af9ec64a3b6753a954cd0f06718a4fb42f7
+9dcae1ef21e6763735a93c278360bad59bad59ae refs/tags/livekit-plugins-playht@1.0.1
+^adf685e59d998339ca512435caa7726b0d2b8f87
+5ae378f20ebd87b923ffcfbd29e46e5cc492d5e1 refs/tags/livekit-plugins-playht@1.0.2
+^8d4966859aca719712df590edeaa2682f952de50
+fe4a88cd791bf4c327d2cc71326a8288997d01cd refs/tags/livekit-plugins-playht@1.0.3
+^0283971729bb64df38620a85bff780d76b89f93c
+a83a786a44676ed8358373ecef9be41a61aa4771 refs/tags/livekit-plugins-rag@0.2.0
+^b4e09f6d6134576ad1d43836a331fdf3a4aa6580
+9a87d1cb373065a22a1bf13e3fe49695028414a4 refs/tags/livekit-plugins-rag@0.2.1
+^c9dc488f4ca030e69b591b611706fa2b483d567f
+50318fe35d96c17d1aa21af4b4bd6b99ea35b436 refs/tags/livekit-plugins-rag@0.2.2
+^087c7031a391d2208315eb63426fae5783d32fc9
+2673629efe904ecb551b80e2eb734b36e981e013 refs/tags/livekit-plugins-rag@0.2.3
+^0283971729bb64df38620a85bff780d76b89f93c
+37f2a64f8cb3000ead67308e9b70d8ac01604d6f refs/tags/livekit-plugins-rag@0.2.4
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+f2a96172e6b9048ff9e72fa660cf908267a4fd1b refs/tags/livekit-plugins-rag@0.2.5
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+38339b82e4c32aac67224ea1dde563f2eb334459 refs/tags/livekit-plugins-resemble@0.1.0
+^3734a6cd7b20d330631614fbd0a322325300cbdc
+0436f5b1e0f618763e3fe6708bc09b9522b4f0b8 refs/tags/livekit-plugins-resemble@0.1.1
+^8098d4a4ea1cb90d5ce0488c2b038982d47fd14f
+e2aa2fbd4ea6aa2300c4d7736e645a870fcfe3ce refs/tags/livekit-plugins-resemble@0.1.2
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+5595ebb6c3b60f76a87eb1228f358507afe02917 refs/tags/livekit-plugins-rime@0.2.0
+^5b8881e2e5ffce68d33759fb9fc008532e0d06da
+3f02ba824b906ff051c9aa63b1912b6d96d98811 refs/tags/livekit-plugins-rime@0.2.1
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+9b8cc2501bdd91c4113f3077bf4308f731ee63fe refs/tags/livekit-plugins-rime@0.2.2
+^167348b72cb73bcaebea156eacf3f053b4939985
+2f0956c8cffd00e65865894de8b815006fe875c4 refs/tags/livekit-plugins-rime@0.2.3
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+908fdfc42c579b25f29a32743c4946d0b6ff82a5 refs/tags/livekit-plugins-silero@0.6.0
+^b4e09f6d6134576ad1d43836a331fdf3a4aa6580
+10c9830599ddf92201117d0a52960ecefad77ae0 refs/tags/livekit-plugins-silero@0.6.1
+^ceeed1be7a44ada858c85af308232103ba743861
+f471d28d1a0967b249d062e1b42152e308da3b97 refs/tags/livekit-plugins-silero@0.6.2
+^8ce90df03ec2e81dad0a56f66abb21b086704803
+7318aede738226d22506b5f4d2d636c1673153e8 refs/tags/livekit-plugins-silero@0.6.3
+^c9dc488f4ca030e69b591b611706fa2b483d567f
+52756a568bd5b977b83d83096dd6309819b10d24 refs/tags/livekit-plugins-silero@0.6.4
+^087c7031a391d2208315eb63426fae5783d32fc9
+8680cf34e68cccd5d14add4174afd51f90e1e832 refs/tags/livekit-plugins-silero@0.7.0
+^420858cd2c0f072d638708b2a1d6d7c941a65d00
+12f07bb128842722676592c80d19d1096f04df6e refs/tags/livekit-plugins-silero@0.7.1
+^1802d3466f8b56e1ec16f1bfc9f75f7960ed62cc
+7b709ad819b9a968fadafbae72aa3adde76f770d refs/tags/livekit-plugins-silero@0.7.2
+^1aa497ed3370599884b94b9374bc5a1cf47199c4
+66a096dae18669c00957a88bb1b064cde22311d8 refs/tags/livekit-plugins-silero@0.7.3
+^adf685e59d998339ca512435caa7726b0d2b8f87
+ff3865c4090bf350b8b8d0b477af28f284e2f884 refs/tags/livekit-plugins-silero@0.7.4
+^0283971729bb64df38620a85bff780d76b89f93c
+6885aa9411479ad56757be50107e22174c47f007 refs/tags/livekit-plugins-silero@0.7.5
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+592e0988228aff055b7d38322b4ca3576cbe1ca4 refs/tags/livekit-plugins-silero@0.7.6
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+993e8f12dbfc9983e1fabaeed62a67bc4580e804 refs/tags/livekit-plugins-speechmatics@0.0.2
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+9dd62083f8c3f72035ca5db01ef92d9e4b437816 refs/tags/livekit-plugins-speechmatics@0.0.3
+^89a2ac284afed249a2502cd184eb7016e30b43c6
+0dd9db043f683d0099d7b334a9edeea48df1cf93 refs/tags/livekit-plugins-turn-detector@0.3.0
+^8d4966859aca719712df590edeaa2682f952de50
+22040a90b890f033139d60233717e3c35a91152c refs/tags/livekit-plugins-turn-detector@0.3.1
+^0283971729bb64df38620a85bff780d76b89f93c
+a8bcc48f32271a17b9f1826f69d1f513410f3414 refs/tags/livekit-plugins-turn-detector@0.3.2
+^57869fcbba3a480963fc1497bc47d8e1f263ecbb
+164f80d897d7de51653992d9fa68a05cd173eb13 refs/tags/livekit-plugins-turn-detector@0.3.3
+^7941263f4919b46646becef71ee00bd42831440b
+56a2e759241153aedb3fa81c4d719da72deae927 refs/tags/livekit-plugins-turn-detector@0.3.4
+^799a53d519cf0ab79e7ad00751d2aa69f7a311a4
+1da06ad833fb874e4446f63162f532fa8bd61ebc refs/tags/livekit-plugins-turn-detector@0.3.5
+^924b79e0a0305be5fa3c77cfbd8fcab63bfd7de7
+58a6a80ce78d744ea30f4f71ecf74047651aea55 refs/tags/livekit-plugins-turn-detector@0.3.6
+^f5c5f471bf7429f1f87b41a9481c93a18c1b05f5
+91dba2066550103c94831a4f9264dbebf2c1f46c refs/tags/livekit-plugins-turn-detector@0.4.0
+^a874f378de3f6316827a6254f8f2c9eec9d2497a
+83c4a979d5edf552dc09119a69b97d4afc36828b refs/tags/livekit-plugins-turn-detector@0.4.1
+^7840fee86ddfaad02b7d3d52d663e9abd2016340
+e8a195b717d98ce181bd81d4beb74cadb4c7c8f0 refs/tags/livekit-plugins-turn-detector@0.4.2
+^bb0784c2cdd8c55ee102acfc67da712b46925add
+ace8354ed9bcf9d05fd2db4da77f099d01db3683 refs/tags/livekit-plugins-turn-detector@0.4.3
+^10bb0337a99db17b1e8f528438d15eccde0623f4
+8b3efe71bff5ef75a44df897880e2c129ae8d92d refs/tags/livekit-plugins-turn-detector@0.4.4
+^8098d4a4ea1cb90d5ce0488c2b038982d47fd14f
+ffffbe150e0c4af201064b12bda58c04d43a5a0a refs/tags/livekit-plugins-turn-detector@0.4.5
+^89a2ac284afed249a2502cd184eb7016e30b43c6
