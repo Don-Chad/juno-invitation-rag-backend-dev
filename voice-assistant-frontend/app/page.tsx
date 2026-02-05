@@ -93,7 +93,11 @@ export default function Page() {
       
       // In production we run as `output: "export"` (static export), so Next.js API routes do not exist.
       // Call the Token Server directly.
-      const url = new URL("http://178.156.186.166:3011/createToken");
+      const tokenServerOrigin =
+        process.env.NEXT_PUBLIC_TOKEN_SERVER_ORIGIN ||
+        process.env.NEXT_PUBLIC_BACKEND_URL || // backwards-compat
+        window.location.origin;
+      const url = new URL("/createToken", tokenServerOrigin);
       
       console.log("Connecting: calling token endpoint", url.toString());
       const response = await fetch(url.toString(), {

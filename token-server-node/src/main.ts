@@ -113,10 +113,25 @@ app.use(bodyParser.json({ limit: '256kb' }));
 const port = Number(process.env.PORT ?? '3011');
 
 // CORS: needed if browser calls token server directly (separate origin).
-// Use CORS_ORIGIN="https://your-frontend.com" to lock down; default "*" for local dev.
+// IMPORTANT: if you set `credentials: true`, you cannot use `Access-Control-Allow-Origin: *`.
+// - Set CORS_ORIGIN="https://your-frontend.com" (or comma-separated list) to lock down.
+// - If unset (or "*"), we reflect the request Origin (dev-friendly).
+const corsOriginEnv = (process.env.CORS_ORIGIN || '').trim();
+const allowedOrigins = corsOriginEnv.split(',').map((o) => o.trim()).filter(Boolean);
+
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN ?? '*',
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps or curl)
+      if (!origin) return callback(null, true);
+      
+      if (corsOriginEnv === '*' || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        console.warn(`CORS blocked for origin: ${origin}`);
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   }),
 );

@@ -70,14 +70,14 @@ function ConnectionIndicator() {
 
 // Retry logic for subscription check (handles webhook race condition)
 const checkSubscriptionWithRetry = async (
-  backendUrl: string,
+  tokenServerOrigin: string,
   idToken: string,
   maxRetries = 5
 ): Promise<SubscriptionStatus> => {
   for (let i = 0; i < maxRetries; i++) {
     try {
       // Use the Token Server directly (port 3011)
-      const url = new URL("http://178.156.186.166:3011/createToken");
+      const url = new URL("/createToken", tokenServerOrigin);
       
       const checkRes = await fetch(url.toString(), {
         method: "POST",
@@ -176,21 +176,31 @@ function EmbedContent() {
           handleAuthenticated(user);
         } else if (wpContext) {
           // Check for device token
-          const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || window.location.origin;
-          const validation = await validateDeviceToken(backendUrl, wpContext.siteId);
+          const tokenServerOrigin =
+            process.env.NEXT_PUBLIC_TOKEN_SERVER_ORIGIN ||
+            process.env.NEXT_PUBLIC_BACKEND_URL || // backwards-compat
+            window.location.origin;
           
-          if (validation.valid && validation.uid) {
-            // We have a valid device token, but Firebase doesn't know about it.
-            // In this architecture, we still need the user to be signed into Firebase
-            // for the LiveKit token server to verify them via ID token.
-            // So we still show the MagicLinkAuth or FirebaseAuth.
-            // BUT, if we wanted "Silent Re-auth", we'd need a way to sign into Firebase
-            // using the device token (e.g. Custom Token from backend).
+          try {
+            const validation = await validateDeviceToken(tokenServerOrigin, wpContext.siteId);
             
-            // For now, let's stick to the plan: if no Firebase user, show auth.
-            setAuthState('needs_auth');
-            setIsCheckingAuth(false);
-          } else {
+            if (validation.valid && validation.uid) {
+              // We have a valid device token, but Firebase doesn't know about it.
+              // In this architecture, we still need the user to be signed into Firebase
+              // for the LiveKit token server to verify them via ID token.
+              // So we still show the MagicLinkAuth or FirebaseAuth.
+              // BUT, if we wanted "Silent Re-auth", we'd need a way to sign into Firebase
+              // using the device token (e.g. Custom Token from backend).
+              
+              // For now, let's stick to the plan: if no Firebase user, show auth.
+              setAuthState('needs_auth');
+              setIsCheckingAuth(false);
+            } else {
+              setAuthState('needs_auth');
+              setIsCheckingAuth(false);
+            }
+          } catch (err) {
+            console.warn("Silent login check failed (likely no token yet):", err);
             setAuthState('needs_auth');
             setIsCheckingAuth(false);
           }
@@ -223,15 +233,18 @@ function EmbedContent() {
     
     try {
       const idToken = await user.getIdToken();
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || window.location.origin;
+      const tokenServerOrigin =
+        process.env.NEXT_PUBLIC_TOKEN_SERVER_ORIGIN ||
+        process.env.NEXT_PUBLIC_BACKEND_URL || // backwards-compat
+        window.location.origin;
       
       // 1. Exchange for device token if we have WP context
       if (wpContext) {
-        await exchangeForDeviceToken(backendUrl, idToken, wpContext.siteId);
+        await exchangeForDeviceToken(tokenServerOrigin, idToken, wpContext.siteId);
       }
       
       // 2. Check subscription with retry
-      const sub = await checkSubscriptionWithRetry(backendUrl, idToken);
+      const sub = await checkSubscriptionWithRetry(tokenServerOrigin, idToken);
       
       if (!sub.allowed) {
         setAuthState('subscription_required');
@@ -259,7 +272,11 @@ function EmbedContent() {
       
       // Use the Token Server directly (port 3011) instead of the Next.js API proxy
       // This is required for 'output: export' mode because Next.js API routes are disabled.
-      const url = new URL("http://178.156.186.166:3011/createToken");
+      const tokenServerOrigin =
+        process.env.NEXT_PUBLIC_TOKEN_SERVER_ORIGIN ||
+        process.env.NEXT_PUBLIC_BACKEND_URL || // backwards-compat
+        window.location.origin;
+      const url = new URL("/createToken", tokenServerOrigin);
       
       const response = await fetch(url.toString(), {
         method: "POST",
