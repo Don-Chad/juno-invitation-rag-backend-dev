@@ -155,7 +155,11 @@ const tokenLimiter = rateLimit({
 const createTokenLimiter = rateLimit({
   windowMs: 1 * 60 * 1000,
   max: 60,
-  message: { message: "Too many createToken requests, please try again later." }
+  message: { message: "Too many createToken requests, please try again later." },
+  handler: (req, res, _next, options) => {
+    console.warn(`[RATE LIMIT] createToken exceeded for IP: ${req.ip}`);
+    res.status(options.statusCode).send(options.message);
+  }
 });
 
 // Device token endpoints may be called on login/refresh; keep moderate.
@@ -182,14 +186,22 @@ const revokeDeviceTokenLimiter = rateLimit({
 const handoffStatusLimiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
   max: 120,
-  message: { message: "Too many handoff status requests, please try again later." }
+  message: { message: "Too many handoff status requests, please try again later." },
+  handler: (req, res, _next, options) => {
+    console.warn(`[RATE LIMIT] handoff status exceeded for IP: ${req.ip}`);
+    res.status(options.statusCode).send(options.message);
+  }
 });
 
 // Handoff complete should be rare (once per login).
 const handoffCompleteLimiter = rateLimit({
   windowMs: 1 * 60 * 1000,
   max: 30,
-  message: { message: "Too many handoff complete requests, please try again later." }
+  message: { message: "Too many handoff complete requests, please try again later." },
+  handler: (req, res, _next, options) => {
+    console.warn(`[RATE LIMIT] handoff complete exceeded for IP: ${req.ip}`);
+    res.status(options.statusCode).send(options.message);
+  }
 });
 
 // Allow max 5 webhook requests per minute (should be rare)
@@ -248,6 +260,8 @@ app.post('/api/auth-handoff/complete', handoffCompleteLimiter, async (req: Reque
       createdAt: new Date(),
       expiresAt: new Date(Date.now() + HANDOFF_TTL_MS),
     });
+
+    console.log(`[AUTH HANDOFF] Complete: ${handoffId} for user ${uid} on site ${siteId}`);
 
     return res.json({ success: true });
   } catch (err) {

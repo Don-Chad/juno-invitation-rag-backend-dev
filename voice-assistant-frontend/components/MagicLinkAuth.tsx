@@ -149,8 +149,8 @@ export default function MagicLinkAuth({ userEmail: initialEmail, handoffId, onAu
           <form onSubmit={sendMagicLink}>
             <p className="text-gray-600 mb-6 font-body">
               {initialEmail 
-                ? "Om toegang te krijgen tot je beveiligde chat, moeten we dit apparaat eenmalig verifiëren. We sturen een link naar:"
-                : "Voer je e-mailadres in om een verificatielink te ontvangen voor dit apparaat."}
+                ? "Om toegang te krijgen tot je beveiligde chat, moeten we dit apparaat eenmalig verifiëren. De verificatie opent kort een nieuw tabblad, daarna ga je automatisch verder hier. We sturen een link naar:"
+                : "Voer je e-mailadres in om een verificatielink te ontvangen voor dit apparaat. De verificatie opent kort een nieuw tabblad, daarna ga je automatisch verder hier."}
             </p>
             
             {initialEmail ? (
