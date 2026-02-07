@@ -1,0 +1,13 @@
+# pack-refs with: peeled fully-peeled sorted 
+4c8c4c4594535b63ed6f73ac887c529a4f21747b refs/remotes/origin/main
+b8b4f9dc7154234964ba672ac9bc9d253c1d1f0a refs/remotes/origin/renovate/dependencies-(non-major)
+d22c5f1ffab081261c8d68ba317c1cb1483b23ec refs/remotes/origin/renovate/devdependencies-(non-major)
+829d4072d5d7e06c42a08dbb76b2aa5d6859af1a refs/remotes/origin/renovate/dotenv-17.x
+7868728d4ff79d1138f88772933f9e10d543d453 refs/remotes/origin/renovate/eslint-config-prettier-10.x
+ab1fb9b8060c4ea642b0150137b340bdbab42efd refs/remotes/origin/renovate/express-5.x
+6b8e03a96947f60e26abb0571ab609e970ae4ed2 refs/remotes/origin/renovate/major-eslint-monorepo
+824de557e3e8a78a0e4dfdbd49374db2edee2e3d refs/remotes/origin/renovate/node-24.x
+14c77c9e5785c7966d7fd450fa8ce123ac8c8763 refs/remotes/origin/renovate/npm-body-parser-vulnerability
+58ac5d63a77f6f88881dafd35a47863eddd6dfd9 refs/remotes/origin/renovate/pnpm-10.x
+c7c7a30588c909f023358e034cd0e847dd891c4d refs/remotes/origin/renovate/trivago-prettier-plugin-sort-imports-6.x
+667da442864686862c08c86045b063a18deb26c6 refs/remotes/origin/tobias/body-parser-fix
