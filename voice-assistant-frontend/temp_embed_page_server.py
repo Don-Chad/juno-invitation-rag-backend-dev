@@ -1,43 +1,45 @@
+"""
+Simulates a CUSTOMER'S WEBSITE that embeds the AVA voice assistant via iframe.
+
+This server does NOT serve the AVA frontend itself. It only serves an HTML page
+that contains an <iframe> pointing to the PRODUCTION AVA domain
+(https://the-invitation-2.makecontact.io/embed).
+
+This is the correct way to test the embed flow locally:
+  - This server = the customer site (e.g., junoburger.com)
+  - The iframe inside points to the real AVA frontend on Cloudflare
+  - Firebase auth, cookies, BroadcastChannel all happen on the AVA domain
+
+DO NOT serve the out/ directory from here. The out/ directory is a static export
+meant for Cloudflare deployment. Serving it locally on a different port causes
+domain mismatches with Firebase authorized domains and cookie origins.
+"""
+
 import uvicorn
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 import os
 
 # Global Variables
 PORT = 3019
-STATIC_DIR = "/home/mark/projects/14_livekit_server_juno_the_invitation_rag_backend_dev/voice-assistant-frontend/out"
-EMBED_EXAMPLE_PATH = "/home/mark/projects/14_livekit_server_juno_the_invitation_rag_backend_dev/voice-assistant-frontend/public/embed-example.html"
+EMBED_EXAMPLE_PATH = os.path.join(
+    os.path.dirname(__file__),
+    "public",
+    "embed-example.html"
+)
 
 app = FastAPI()
 
-# Mount the static files directory from 'out' to ensure assets (JS, CSS, etc.) are available
-if os.path.exists(STATIC_DIR):
-    app.mount("/_next", StaticFiles(directory=os.path.join(STATIC_DIR, "_next")), name="next_static")
-    app.mount("/images", StaticFiles(directory=os.path.join(STATIC_DIR, "images")), name="images")
-    app.mount("/fonts", StaticFiles(directory=os.path.join(STATIC_DIR, "fonts")), name="fonts")
-
 @app.get("/")
 async def read_index():
-    """Serve the embed-example.html as the main index page."""
+    """Serve the embed-example.html — simulates a customer's website with the AVA iframe."""
     if os.path.exists(EMBED_EXAMPLE_PATH):
         return FileResponse(EMBED_EXAMPLE_PATH)
-    return {"error": "embed-example.html not found"}
-
-@app.get("/{path:path}")
-async def serve_static(path: str):
-    """Fallback to serve other static files from the 'out' directory."""
-    full_path = os.path.join(STATIC_DIR, path)
-    if os.path.isfile(full_path):
-        return FileResponse(full_path)
-    
-    # Handle Next.js style clean URLs
-    html_path = full_path + ".html"
-    if os.path.isfile(html_path):
-        return FileResponse(html_path)
-    
-    return FileResponse(EMBED_EXAMPLE_PATH)
+    return {"error": "embed-example.html not found", "expected_path": EMBED_EXAMPLE_PATH}
 
 if __name__ == "__main__":
-    print(f"Starting server on http://0.0.0.0:{PORT}")
+    print(f"=== AVA Embed Test Server (simulates customer site) ===")
+    print(f"Open http://localhost:{PORT} to see the embedded AVA assistant")
+    print(f"The iframe inside points to the PRODUCTION AVA domain.")
+    print(f"=========================================================")
     uvicorn.run(app, host="0.0.0.0", port=PORT)

@@ -151,6 +151,47 @@ const tokenLimiter = rateLimit({
   message: { message: "Too many token requests, please try again later." }
 });
 
+// CreateToken is called during room connect retries; keep it reasonably high.
+const createTokenLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000,
+  max: 60,
+  message: { message: "Too many createToken requests, please try again later." }
+});
+
+// Device token endpoints may be called on login/refresh; keep moderate.
+const createDeviceTokenLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000,
+  max: 30,
+  message: { message: "Too many create-device-token requests, please try again later." }
+});
+
+const validateDeviceTokenLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000,
+  max: 120,
+  message: { message: "Too many validate-device-token requests, please try again later." }
+});
+
+const revokeDeviceTokenLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000,
+  max: 30,
+  message: { message: "Too many revoke-device-token requests, please try again later." }
+});
+
+// Auth handoff status is polled briefly by the iframe; allow a higher limit.
+// Still rate-limited to prevent abuse.
+const handoffStatusLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 120,
+  message: { message: "Too many handoff status requests, please try again later." }
+});
+
+// Handoff complete should be rare (once per login).
+const handoffCompleteLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000,
+  max: 30,
+  message: { message: "Too many handoff complete requests, please try again later." }
+});
+
 // Allow max 5 webhook requests per minute (should be rare)
 const webhookLimiter = rateLimit({
   windowMs: 1 * 60 * 1000,
@@ -162,12 +203,105 @@ app.get('/healthz', (_req, res) => res.status(200).send({ ok: true }));
 
 // --- 🌐 WEBHOOKS & DEVICE TOKENS ---
 app.post('/api/webhook/subscription', webhookLimiter, handleSubscriptionWebhook);
-app.post('/api/create-device-token', tokenLimiter, createDeviceToken);
-app.post('/api/validate-device-token', tokenLimiter, validateDeviceToken);
-app.post('/api/revoke-device-token', tokenLimiter, revokeDeviceToken);
+app.post('/api/create-device-token', createDeviceTokenLimiter, createDeviceToken);
+app.post('/api/validate-device-token', validateDeviceTokenLimiter, validateDeviceToken);
+app.post('/api/revoke-device-token', revokeDeviceTokenLimiter, revokeDeviceToken);
+
+// --- 🔁 AUTH HANDOFF (magic link -> embedded iframe) ---
+// Browsers can partition storage for embedded iframes. That means a Firebase login completed
+// in a top-level tab (from an email click) may not be visible inside the embedded iframe.
+//
+// We solve this by:
+// - generating a random handoffId in the embedded iframe
+// - including it in the magic link continue URL
+// - after sign-in, this endpoint stores the verified uid/email for that handoffId
+// - the iframe polls status and receives a Firebase custom token to sign in locally
+//
+// NOTE: this is intentionally short-lived.
+const HANDOFF_TTL_MS = 10 * 60 * 1000; // 10 minutes
+
+app.post('/api/auth-handoff/complete', handoffCompleteLimiter, async (req: Request, res: Response) => {
+  try {
+    const { handoffId, siteId } = req.body ?? {};
+    if (!handoffId || !siteId) {
+      return res.status(400).json({ success: false, message: 'Missing required fields' });
+    }
+
+    const authHeader = req.header('Authorization') ?? '';
+    if (!authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ success: false, message: 'Unauthorized' });
+    }
+
+    const idToken = authHeader.slice('Bearer '.length);
+    const decoded = await getAuth(appInstance).verifyIdToken(idToken, true);
+    const uid = decoded.uid;
+    const email = decoded.email;
+    if (!email) {
+      return res.status(400).json({ success: false, message: 'Missing email on token' });
+    }
+
+    const db = getFirestore(appInstance);
+    await db.collection('authHandoffs').doc(String(handoffId)).set({
+      uid,
+      email: email.toLowerCase(),
+      siteId: String(siteId),
+      createdAt: new Date(),
+      expiresAt: new Date(Date.now() + HANDOFF_TTL_MS),
+    });
+
+    return res.json({ success: true });
+  } catch (err) {
+    console.error('Error completing auth handoff:', err);
+    return res.status(500).json({ success: false, message: 'Handoff complete failed' });
+  }
+});
+
+app.post('/api/auth-handoff/status', handoffStatusLimiter, async (req: Request, res: Response) => {
+  try {
+    const { handoffId, siteId } = req.body ?? {};
+    if (!handoffId || !siteId) {
+      return res.status(400).json({ complete: false, message: 'Missing required fields' });
+    }
+
+    const db = getFirestore(appInstance);
+    const docRef = db.collection('authHandoffs').doc(String(handoffId));
+    const snap = await docRef.get();
+    if (!snap.exists) {
+      return res.json({ complete: false });
+    }
+
+    const data = snap.data() as any;
+    if (!data?.uid || !data?.email || !data?.siteId || !data?.expiresAt) {
+      await docRef.delete().catch(() => {});
+      return res.json({ complete: false });
+    }
+
+    if (String(data.siteId) !== String(siteId)) {
+      return res.status(403).json({ complete: false, message: 'Handoff not valid for this site' });
+    }
+
+    const expiresAt = data.expiresAt?.toDate ? data.expiresAt.toDate() : new Date(data.expiresAt);
+    if (Date.now() > expiresAt.getTime()) {
+      await docRef.delete().catch(() => {});
+      return res.json({ complete: false });
+    }
+
+    // One-time: mint custom token, then delete handoff doc
+    const customToken = await getAuth(appInstance).createCustomToken(String(data.uid), {
+      email: String(data.email),
+      siteId: String(data.siteId),
+    });
+    await docRef.delete().catch(() => {});
+
+    return res.json({ complete: true, customToken });
+  } catch (err) {
+    console.error('Error checking auth handoff status:', err);
+    return res.status(500).json({ complete: false, message: 'Handoff status error' });
+  }
+});
 
 // Apply limiter to the route
-app.post('/createToken', tokenLimiter, async (req: Request, res: Response) => {
+app.post('/createToken', createTokenLimiter, async (req: Request, res: Response) => {
   const body: TokenRequest = req.body ?? {};
 
   try {

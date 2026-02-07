@@ -163,6 +163,7 @@ export async function createDeviceToken(req: Request, res: Response): Promise<vo
       httpOnly: true,
       secure: true, // ALWAYS true for cross-origin cookies
       sameSite: 'none', // Required for cross-origin iframe
+      partitioned: true, // CHIPS support for Chrome third-party cookie policy
       maxAge: TOKEN_EXPIRY_DAYS * 24 * 60 * 60 * 1000,
       path: '/'
     });
@@ -320,6 +321,7 @@ export async function revokeDeviceToken(req: Request, res: Response): Promise<vo
         httpOnly: true,
         secure: true,
         sameSite: 'none',
+        partitioned: true,
         path: '/'
     });
 

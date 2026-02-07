@@ -70,6 +70,7 @@
       </div>
 
       <iframe 
+        id="ava-iframe"
         src="https://the-invitation-2.makecontact.io/embed"
         width="100%"
         height="900px"
@@ -77,6 +78,19 @@
         allow="microphone; camera; autoplay"
         sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-popups-to-escape-sandbox">
       </iframe>
+
+      <script>
+        // Pass parent query params to iframe (e.g. ?action=logout)
+        const iframe = document.getElementById('ava-iframe');
+        const parentParams = new URLSearchParams(window.location.search);
+        if (parentParams.toString()) {
+          const iframeUrl = new URL(iframe.src);
+          parentParams.forEach((value, key) => {
+            iframeUrl.searchParams.set(key, value);
+          });
+          iframe.src = iframeUrl.toString();
+        }
+      </script>
 
       <pre><code>&lt;!-- Copy this code into your Wordpress Custom HTML block --&gt;
 &lt;iframe 
