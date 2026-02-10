@@ -347,7 +347,11 @@ app.post('/createToken', createTokenLimiter, async (req: Request, res: Response)
 
       if (userSnapshot.empty) {
         console.warn(`Blocked access for ${email}: No user record found`);
-        return res.status(403).send({ message: 'Subscription Required' });
+        return res.status(403).send({ 
+          message: 'Subscription Required',
+          reason: 'no_user_record',
+          email: email
+        });
       }
 
       const userData = userSnapshot.docs[0].data();
@@ -355,7 +359,12 @@ app.post('/createToken', createTokenLimiter, async (req: Request, res: Response)
 
       if (status !== 'active' && status !== 'trial') {
         console.warn(`Blocked access for ${email}: Subscription status is ${status}`);
-        return res.status(403).send({ message: 'Subscription Required' });
+        return res.status(403).send({ 
+          message: 'Subscription Required',
+          reason: 'inactive_subscription',
+          status: status,
+          email: email
+        });
       }
     }
 

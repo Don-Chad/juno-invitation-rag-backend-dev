@@ -71,6 +71,7 @@ export default function EmbedPage() {
   const [firebaseUser, setFirebaseUser] = useState<User | null>(null);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   const [isConnecting, setIsConnecting] = useState(false);
+  const [subscriptionError, setSubscriptionError] = useState<{reason: string, email: string} | null>(null);
   const [authState, setAuthState] = useState<'checking' | 'needs_auth' | 'authenticated'>('checking');
   const [wpContext, setWpContext] = useState<WordPressContext | null>(null);
   const [handoffId, setHandoffId] = useState<string | null>(null);
@@ -152,15 +153,36 @@ export default function EmbedPage() {
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "https://token.makecontact.io";
     let cancelled = false;
     let attempts = 0;
-    // Backoff polling to avoid rate-limit flooding (and to be polite to the token server).
-    // We keep trying for ~6 minutes max.
-    const MAX_POLL_ATTEMPTS = 90; // ~6 minutes with 2s..10s backoff
-    let delayMs = 2000;
+    const startedAt = Date.now();
+    // Keep trying for ~6 minutes max.
+    const MAX_POLL_ATTEMPTS = 200;
+    let delayMs = 1000;
+
+    const jitter = (baseMs: number) => {
+      // +/- 20% jitter to avoid synchronized thundering herd
+      const delta = baseMs * 0.2;
+      return Math.max(250, Math.round(baseMs + (Math.random() * 2 - 1) * delta));
+    };
+
+    const computeNextDelayMs = (elapsedMs: number, prevDelayMs: number, wasRateLimited: boolean) => {
+      if (wasRateLimited) return 15000;
+      // 0–15s: every 1s
+      if (elapsedMs < 15_000) return 1000;
+      // 15–60s: 2–5s (ramp up)
+      if (elapsedMs < 60_000) {
+        const t = (elapsedMs - 15_000) / 45_000; // 0..1
+        return Math.round(2000 + t * 3000); // 2000..5000
+      }
+      // After 60s: backoff up to 10s
+      return Math.min(10_000, Math.round(prevDelayMs * 1.5));
+    };
 
     const tick = async () => {
       if (cancelled) return;
       attempts += 1;
       if (attempts > MAX_POLL_ATTEMPTS) return;
+      const elapsedMs = Date.now() - startedAt;
+      let wasRateLimited = false;
 
       try {
         const resp = await fetch(`${backendUrl}/api/auth-handoff/status`, {
@@ -169,8 +191,7 @@ export default function EmbedPage() {
           body: JSON.stringify({ handoffId, siteId: wpContext.siteId }),
         });
         if (resp.status === 429) {
-          // Rate limited: slow down hard
-          delayMs = 15000;
+          wasRateLimited = true;
           throw new Error('handoff status 429');
         }
         if (!resp.ok) throw new Error(`handoff status ${resp.status}`);
@@ -180,13 +201,12 @@ export default function EmbedPage() {
           try { sessionStorage.removeItem(`ava_handoff_${wpContext.siteId}`); } catch {}
           return; // stop polling; onAuthStateChanged will take over
         }
-        // Not complete yet: gradually back off up to 10s
-        delayMs = Math.min(delayMs + 1000, 10000);
       } catch (e) {
         // Non-blocking: just try again on next tick (with backoff)
       }
 
-      setTimeout(tick, delayMs);
+      delayMs = computeNextDelayMs(elapsedMs, delayMs, wasRateLimited);
+      setTimeout(tick, jitter(delayMs));
     };
 
     const t = setTimeout(tick, 1000);
@@ -281,6 +301,14 @@ export default function EmbedPage() {
         },
       });
 
+      if (response.status === 403) {
+        const data = await response.json();
+        if (data.message === 'Subscription Required') {
+          setSubscriptionError({ reason: data.reason, email: data.email });
+          return;
+        }
+      }
+
       if (!response.ok) {
         throw new Error(`Failed to get connection details: ${response.status}`);
       }
@@ -347,6 +375,31 @@ export default function EmbedPage() {
         handoffId={handoffId || undefined}
         onAuthenticated={() => setAuthState('authenticated')}
       />
+    );
+  }
+
+  if (subscriptionError) {
+    return (
+      <div className="h-full flex items-center justify-center bg-white p-8 text-center">
+        <div className="max-w-sm">
+          <div className="w-16 h-16 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m0 0v2m0-2h2m-2 0h-2m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-heading font-bold text-gray-800 mb-2">Abonnement Vereist</h2>
+          <p className="text-gray-600 mb-6">
+            Er is geen actief abonnement gevonden voor <strong>{subscriptionError.email}</strong>. 
+            Neem contact op met de beheerder om toegang te krijgen.
+          </p>
+          <button
+            onClick={handleLogout}
+            className="text-[#B9965B] font-medium underline"
+          >
+            Inloggen met een ander account
+          </button>
+        </div>
+      </div>
     );
   }
 

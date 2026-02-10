@@ -53,8 +53,6 @@ async function verifyOrigin(siteId: string, origin: string): Promise<boolean> {
   const siteDoc = await db.collection('approvedSites').doc(siteId).get();
   
   if (!siteDoc.exists) {
-    // For development, if siteId is 'dev' or if the collection is empty, maybe allow?
-    // But for security, we should enforce this.
     console.warn(`Site ${siteId} not found in approvedSites`);
     return false;
   }
