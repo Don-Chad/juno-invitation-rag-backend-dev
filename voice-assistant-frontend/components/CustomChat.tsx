@@ -152,10 +152,13 @@ export function CustomChat() {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setMessage(e.target.value);
-    if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    const newValue = e.target.value;
+    if (newValue.length <= 1000) {
+      setMessage(newValue);
+      if (textareaRef.current) {
+        textareaRef.current.style.height = "auto";
+        textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+      }
     }
   };
 
@@ -199,6 +202,7 @@ export function CustomChat() {
             ref={textareaRef}
             rows={3}
             value={message}
+            maxLength={1000}
             placeholder="Type a message..."
             onChange={handleChange}
             onKeyDown={handleKeyDown}
