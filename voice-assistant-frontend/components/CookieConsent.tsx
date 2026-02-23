@@ -10,10 +10,12 @@ export function useStorageAccess() {
     // Check if we have storage access
     if (typeof document !== 'undefined' && 'hasStorageAccess' in document) {
       (document as any).hasStorageAccess().then((granted: boolean) => {
+          // In Safari, even if granted is true, we might want to re-check 
+          // if we are actually in an iframe and if cookies are actually working.
           setHasStorageAccess(granted);
       });
     } else {
-      // Browser doesn't support Storage Access API (not Safari)
+      // Browser doesn't support Storage Access API (not Safari/modern ITP)
       setHasStorageAccess(true);
     }
   }, []);
@@ -57,13 +59,19 @@ export default function CookieConsent({ onGranted }: { onGranted: () => void }) 
       <div className="z-10 bg-white/90 backdrop-blur-md p-8 rounded-xl shadow-2xl border border-[#B9965B]/30 w-[calc(100%-2rem)] sm:w-96 text-center">
         <h2 className="text-2xl font-heading font-bold text-[#B9965B] mb-4">Enable Cookies for AVA</h2>
         <p className="text-gray-600 mb-6 font-body">
-          Your browser is blocking third-party cookies. Please click below to enable secure login.
+          Safari blokkeert beveiligde toegang in ingesloten vensters. Klik hieronder om toegang in te schakelen.
         </p>
         <button
           onClick={async () => {
             const granted = await requestAccess();
             if (granted) {
               onGranted();
+            } else {
+              // If still not granted, it might be because the user hasn't 
+              // interacted with the AVA domain as a first-party yet.
+              // We could show a link to open the AVA domain directly.
+              const AVA_DOMAIN = process.env.NEXT_PUBLIC_AVA_DOMAIN || window.location.origin;
+              window.open(AVA_DOMAIN, '_blank');
             }
           }}
           disabled={isRequesting}

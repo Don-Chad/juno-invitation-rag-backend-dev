@@ -1,5 +1,6 @@
 "use client";
 
+import CookieConsent, { useStorageAccess } from "@/components/CookieConsent";
 import { NoAgentNotification } from "@/components/NoAgentNotification";
 import MagicLinkAuth from "@/components/MagicLinkAuth";
 import { auth } from "@/lib/firebase";
@@ -360,11 +361,26 @@ export default function EmbedPage() {
     handleDisconnect();
   }, [handleDisconnect]);
 
+  const { hasStorageAccess, requestAccess } = useStorageAccess();
+
   if (isCheckingAuth || authState === 'checking') {
     return (
       <div className="h-full flex items-center justify-center bg-white">
         <div className="text-[#B9965B] font-heading text-xl">Loading...</div>
       </div>
+    );
+  }
+
+  // Safari/ITP Check: If storage access is explicitly denied or not yet granted in an iframe,
+  // show the consent UI. This is required for the ava_device_token cookie to work in Safari.
+  if (hasStorageAccess === false && window.parent !== window) {
+    return (
+      <CookieConsent 
+        onGranted={async () => {
+          await requestAccess();
+          // After access is granted, the next render will proceed to authState check
+        }} 
+      />
     );
   }
 
